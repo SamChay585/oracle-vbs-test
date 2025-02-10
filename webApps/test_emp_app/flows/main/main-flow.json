@@ -1,8 +1,0 @@
-{
-  "id": "main",
-  "description": "Flow main",
-  "defaultPage": "main-editable-table",
-  "services": {},
-  "types": {},
-  "variables": {}
-}
