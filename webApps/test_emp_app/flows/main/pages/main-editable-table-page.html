@@ -1,0 +1,52 @@
+<oj-vb-fragment id="page-header" bridge="[[vbBridge]]" name="page-header">
+  <oj-vb-fragment-param name="title" value="main"></oj-vb-fragment-param>
+  <template slot="actions">
+  </template>
+</oj-vb-fragment>
+<div class="oj-flex">
+  <div class="oj-flex-item oj-sm-12 oj-md-2">
+    <oj-button label="Save" on-oj-action="[[$listeners.buttonAction]]"></oj-button>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-table scroll-policy="loadMoreOnScroll" class="oj-flex-item oj-sm-12 oj-md-11" data="[[ $variables.EmployeeADP ]]"
+    columns='[{"headerText":"age","field":"age","template":"age"},{"headerText":"emailAddress","field":"emailAddress","template":"emailAddress"},{"headerText":"firstName","field":"firstName","template":"firstName"},{"headerText":"qualification","field":"qualification","template":"qualification"}]'
+    on-oj-before-row-edit="[[$listeners.tableBeforeRowEdit]]" edit-mode="rowEdit"
+    on-oj-before-row-edit-end="[[$listeners.tableBeforeRowEditEnd]]">
+    <template slot="age">
+      <oj-bind-if test="[[$current.mode==='navigation']]">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </oj-bind-if>
+      <oj-bind-if test="[[$current.mode==='edit']]">
+        <oj-input-number value="{{ $variables.CurrentRow.age }}"
+          style="text-align: right;"></oj-input-number>
+      </oj-bind-if>
+    </template>
+    <template slot="emailAddress">
+        <oj-bind-if test="[[$current.mode==='navigation']]">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </oj-bind-if>
+      <oj-bind-if test="[[$current.mode==='edit']]">
+        <oj-input-text value="{{ $variables.CurrentRow.emailAddress }}"></oj-input-text>
+      </oj-bind-if>
+    </template>
+    <template slot="firstName">
+      <oj-bind-if test="[[$current.mode==='navigation']]">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </oj-bind-if>
+      <oj-bind-if test="[[$current.mode==='edit']]">
+        <oj-input-text value="{{ $variables.CurrentRow.firstName }}"></oj-input-text>
+      </oj-bind-if>
+    </template>
+    <template slot="qualification">  
+      <oj-bind-if test="[[$current.mode==='navigation']]">
+        <oj-bind-text value="[[$current.data]]"></oj-bind-text>
+      </oj-bind-if>
+      <oj-bind-if test="[[$current.mode==='edit']]">
+        <oj-input-text value="{{ $variables.CurrentRow.qualification }}"></oj-input-text>
+      </oj-bind-if>
+    </template>
+  </oj-table>
+</div>
+
+

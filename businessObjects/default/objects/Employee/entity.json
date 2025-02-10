@@ -1,0 +1,88 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "f2cb57bd-c707-44fc-ace2-e7373c333755",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "11103f6a-5031-4b97-8077-257db7e269b6",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "a979871f-c8c0-4acd-84c5-893096a7ae36",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "2beff993-4339-4604-914e-48be3449b120",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "5a956833-fa9a-496e-8bce-9318cb743513",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+        {
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "b400f651-44f3-44e0-aeea-60a62f96c651",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "firstName",
+            "oid": "440209dc-b12a-4429-9dc9-555be3931d83",
+            "displayLabel": "First Name"
+        },
+        {
+            "type": "string",
+            "name": "lastName",
+            "oid": "e9109ce9-822d-4ccb-93e0-4c0ba1f5a410",
+            "displayLabel": "Last Name"
+        },
+        {
+            "type": "string",
+            "name": "emailAddress",
+            "oid": "e350533a-092a-4bfa-8ee1-83076585e14f",
+            "displayLabel": "Email Address",
+            "format": "email"
+        },
+        {
+            "type": "number",
+            "name": "age",
+            "oid": "99196159-1374-4900-8fa2-36310f52bd36",
+            "displayLabel": "Age"
+        },
+        {
+            "type": "string",
+            "name": "qualification",
+            "oid": "8172eb27-14c4-47e2-a1f8-8894c9923412",
+            "displayLabel": "Qualification"
+        }
+    ],
+    "name": "Employee",
+    "oid": "e357fbf8-dd06-49d4-8579-bc8ef2941a23",
+    "displayLabel": "Employee"
+}
