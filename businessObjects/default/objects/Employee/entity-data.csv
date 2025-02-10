@@ -1,3 +1,0 @@
-id,creationDate,lastUpdateDate,createdBy,lastUpdatedBy,firstName,lastName,emailAddress,age,qualification
-1,2024-10-16T12:00:34,2024-10-16T14:16:27,INTEGRATION_USER.SVC_ADMIN,INTEGRATION_USER.SVC_ADMIN,Div,Vani,divya.vani@oracle.com,33.0,"Btech,MBA"
-2,2024-10-16T12:01:11,2024-10-16T14:16:28,INTEGRATION_USER.SVC_ADMIN,INTEGRATION_USER.SVC_ADMIN,Raki,Konda,rakesh.k@gmail.in,36.0,Btech
