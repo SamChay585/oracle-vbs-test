@@ -1,7 +1,1 @@
-argent-integration-codebase.git
-
-Git repository for all Integration projects within Argent
-
-This is the new app created by the CICD devops
-
-The latest test 22-01-2025..
+testing external repo 10-02-2025
