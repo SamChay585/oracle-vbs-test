@@ -1,1 +1,9 @@
-
+{
+  "oic": {
+        "integrations": [
+            {
+                "filename": "AE_ISUPNL_INVENT_MOVEME_SCHEDU_01.00.0000.iar"
+            }
+        ]
+  }
+}
