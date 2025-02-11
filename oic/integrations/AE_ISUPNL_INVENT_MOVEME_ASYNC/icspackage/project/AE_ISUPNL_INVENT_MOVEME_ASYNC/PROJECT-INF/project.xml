@@ -1,0 +1,2943 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:icsproject name="project_1" version="10.1" cversion="104" modelType="freeform" xmlns="http://www.oracle.com/2014/03/ics/project/definition" xmlns:ns2="http://www.oracle.com/2014/03/ics/flow/definition" xmlns:ns3="http://www.oracle.com/2014/03/ics/project">
+    <projectCode>AE_ISUPNL_INVENT_MOVEME_ASYNC</projectCode>
+    <projectVersion>01.00.0000</projectVersion>
+    <projectName>AE_iSupNL_Inventory_Movement_Async</projectName>
+    <percentComplete>100</percentComplete>
+    <projectHasErrors>false</projectHasErrors>
+    <projectHasWarnings>false</projectHasWarnings>
+    <ns3:icsflow name="flow_1">
+        <ns2:application name="application_13">
+            <ns2:role>source</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_OIC_REST_CONN</ns2:code>
+                <ns2:name>InvokeInventoryMovement</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>fire-and-forget</ns2:mep>
+            <ns2:outbound name="outbound_14">
+                <ns2:binding>rest</ns2:binding>
+                <ns2:operation>execute</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_15">
+                    <ns2:resource name="resource_17" location="../resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_867" location="../resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.jca" type="jca"/>
+                </ns2:resourceGroup>
+                <ns2:output name="output_19">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_18"/>
+                </ns2:output>
+            </ns2:outbound>
+        </ns2:application>
+        <ns2:application name="application_66">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>CreateMovementRequest</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_67">
+                <ns2:operation>create</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_68">
+                    <ns2:resource name="resource_71" location="../resources/application_66/inbound_67/resourcegroup_68/CreateMovementRequest_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_4055" location="../resources/application_66/inbound_67/resourcegroup_68/CreateMovementRequest_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_4056" location="../resources/application_66/inbound_67/resourcegroup_68/ICSFault.xsd" type="xsd"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_73">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_72"/>
+                </ns2:input>
+                <ns2:output name="output_75">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_74"/>
+                </ns2:output>
+                <ns2:output name="output_77">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_76"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_189">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>PRESEEDED_COLLOCATED_CONN_1741</ns2:code>
+                <ns2:name>CallCommonErrorNotifyHandler</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_190">
+                <ns2:operation>POST</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_191">
+                    <ns2:resource name="resource_192" location="../resources/application_189/inbound_190/resourcegroup_191/CallCommonErrorNotifyHandler_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_193" location="../resources/application_189/inbound_190/resourcegroup_191/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_194" location="../resources/application_189/inbound_190/resourcegroup_191/CallCommonErrorNotifyHandler_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_196">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_195"/>
+                </ns2:input>
+                <ns2:output name="output_198">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_197"/>
+                </ns2:output>
+                <ns2:output name="output_200">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_199"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_928">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>GetPickSlipDetails</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_929">
+                <ns2:operation>getAll</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_930">
+                    <ns2:resource name="resource_931" location="../resources/application_928/inbound_929/resourcegroup_930/GetPickSlipDetails_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_932" location="../resources/application_928/inbound_929/resourcegroup_930/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_933" location="../resources/application_928/inbound_929/resourcegroup_930/GetPickSlipDetails_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_935">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_934"/>
+                </ns2:input>
+                <ns2:output name="output_937">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_936"/>
+                </ns2:output>
+                <ns2:output name="output_939">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_938"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_971">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>ConfirmPickSlip</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_972">
+                <ns2:operation>create</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_973">
+                    <ns2:resource name="resource_974" location="../resources/application_971/inbound_972/resourcegroup_973/ConfirmPickSlip_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_975" location="../resources/application_971/inbound_972/resourcegroup_973/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_976" location="../resources/application_971/inbound_972/resourcegroup_973/ConfirmPickSlip_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_978">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_977"/>
+                </ns2:input>
+                <ns2:output name="output_980">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_979"/>
+                </ns2:output>
+                <ns2:output name="output_982">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_981"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_988">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>RunESSJobs</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_989">
+                <ns2:operation>submitESSJobRequest</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_990">
+                    <ns2:resource name="resource_991" location="../resources/application_988/inbound_989/resourcegroup_990/RunESSJobs_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_992" location="../resources/application_988/inbound_989/resourcegroup_990/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_993" location="../resources/application_988/inbound_989/resourcegroup_990/RunESSJobs_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_995">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_994"/>
+                </ns2:input>
+                <ns2:output name="output_997">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_996"/>
+                </ns2:output>
+                <ns2:output name="output_999">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>ServiceException</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_998"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_1068">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUP_BIP_SOAP_CONN</ns2:code>
+                <ns2:name>GetLots</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_1069">
+                <ns2:operation>runReport</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_1070">
+                    <ns2:resource name="resource_1073" location="../resources/application_1068/inbound_1069/resourcegroup_1070/GetLots_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_2340" location="../resources/application_1068/inbound_1069/resourcegroup_1070/GetLots_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_2341" location="../resources/application_1068/inbound_1069/resourcegroup_1070/ICSFault.xsd" type="xsd"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_1075">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_1074"/>
+                </ns2:input>
+                <ns2:output name="output_1077">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_1076"/>
+                </ns2:output>
+                <ns2:output name="output_1079">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>AccessDeniedException</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_1078"/>
+                </ns2:output>
+                <ns2:output name="output_1081">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>OperationFailedException</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_1080"/>
+                </ns2:output>
+                <ns2:output name="output_1083">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>InvalidParametersException</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_1082"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_2461">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>GetProductDetails</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_2462">
+                <ns2:operation>getAll</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_2463">
+                    <ns2:resource name="resource_2464" location="../resources/application_2461/inbound_2462/resourcegroup_2463/GetProductDetails_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_2465" location="../resources/application_2461/inbound_2462/resourcegroup_2463/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_2466" location="../resources/application_2461/inbound_2462/resourcegroup_2463/GetProductDetails_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_2468">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2467"/>
+                </ns2:input>
+                <ns2:output name="output_2470">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2469"/>
+                </ns2:output>
+                <ns2:output name="output_2472">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_2471"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_2565">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUP_ERP_BASE_REST_CONN</ns2:code>
+                <ns2:name>getESSJobStatus</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_2566">
+                <ns2:operation>execute</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_2567">
+                    <ns2:resource name="resource_2570" location="../resources/application_2565/inbound_2566/resourcegroup_2567/getESSJobStatus_REQUEST.wsdl" type="wsdl"/>
+                    <ns2:resource name="resource_2582" location="../resources/application_2565/inbound_2566/resourcegroup_2567/getESSJobStatus_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_2583" location="../resources/application_2565/inbound_2566/resourcegroup_2567/ICSFault.xsd" type="xsd"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_2572">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2571"/>
+                </ns2:input>
+                <ns2:output name="output_2574">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2573"/>
+                </ns2:output>
+                <ns2:output name="output_2576">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_2575"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_2953">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>getMovementRequest</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_2954">
+                <ns2:operation>getAll</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_2955">
+                    <ns2:resource name="resource_2956" location="../resources/application_2953/inbound_2954/resourcegroup_2955/getMovementRequest_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_2957" location="../resources/application_2953/inbound_2954/resourcegroup_2955/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_2958" location="../resources/application_2953/inbound_2954/resourcegroup_2955/getMovementRequest_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_2960">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2959"/>
+                </ns2:input>
+                <ns2:output name="output_2962">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_2961"/>
+                </ns2:output>
+                <ns2:output name="output_2964">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_2963"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_3456">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_CLOUD_CONN</ns2:code>
+                <ns2:name>GetPickSlipDetail</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_3457">
+                <ns2:operation>getAll</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_3458">
+                    <ns2:resource name="resource_3459" location="../resources/application_3456/inbound_3457/resourcegroup_3458/GetPickSlipDetail_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_3460" location="../resources/application_3456/inbound_3457/resourcegroup_3458/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_3461" location="../resources/application_3456/inbound_3457/resourcegroup_3458/GetPickSlipDetail_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_3463">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_3462"/>
+                </ns2:input>
+                <ns2:output name="output_3465">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_3464"/>
+                </ns2:output>
+                <ns2:output name="output_3467">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_3466"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:application name="application_3695">
+            <ns2:role>target</ns2:role>
+            <ns2:adapter>
+                <ns2:type>app-adapter</ns2:type>
+                <ns2:code>AE_ISUPNL_ERP_REST_CONN</ns2:code>
+                <ns2:name>GetATRDetail</ns2:name>
+                <ns2:property name="hasAttachment" value="false"/>
+            </ns2:adapter>
+            <ns2:mep>push-sync</ns2:mep>
+            <ns2:inbound name="inbound_3696">
+                <ns2:operation>execute</ns2:operation>
+                <ns2:resourceGroup name="resourcegroup_3697">
+                    <ns2:resource name="resource_3698" location="../resources/application_3695/inbound_3696/resourcegroup_3697/GetATRDetail_REQUEST.jca" type="jca"/>
+                    <ns2:resource name="resource_3699" location="../resources/application_3695/inbound_3696/resourcegroup_3697/ICSFault.xsd" type="xsd"/>
+                    <ns2:resource name="resource_3700" location="../resources/application_3695/inbound_3696/resourcegroup_3697/GetATRDetail_REQUEST.wsdl" type="wsdl"/>
+                </ns2:resourceGroup>
+                <ns2:input name="input_3702">
+                    <ns2:role>request</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_3701"/>
+                </ns2:input>
+                <ns2:output name="output_3704">
+                    <ns2:role>response</ns2:role>
+                    <ns2:messageContextRef refUri="messagecontext_3703"/>
+                </ns2:output>
+                <ns2:output name="output_3706">
+                    <ns2:role>fault</ns2:role>
+                    <ns2:subRole>APIInvocationError</ns2:subRole>
+                    <ns2:messageContextRef refUri="messagecontext_3705"/>
+                </ns2:output>
+            </ns2:inbound>
+        </ns2:application>
+        <ns2:processor name="processor_1">
+            <ns2:type>integrationMetadata</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2">
+                <ns2:resource name="resource_3" location="../resources/processor_1/resourcegroup_2/ICSIntegrationMetadata.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_5">
+                <ns2:messageContextRef refUri="messagecontext_4"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_6">
+            <ns2:type>messageTracker</ns2:type>
+            <ns2:role>messageTracker:global</ns2:role>
+            <ns2:trackingVariableGroup>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_1</ns2:role>
+                    <ns2:primary>true</ns2:primary>
+                    <ns2:name>issueNumber</ns2:name>
+                    <ns2:xpath>/execute/request-wrapper/issueNumber</ns2:xpath>
+                    <ns2:messageContextRef refUri="messagecontext_18"/>
+                    <ns2:output name="output_8">
+                        <ns2:messageContextRef refUri="messagecontext_7"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_2</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_2</ns2:name>
+                    <ns2:messageContextRef refUri="messagecontext_18"/>
+                    <ns2:output name="output_10">
+                        <ns2:messageContextRef refUri="messagecontext_9"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+                <ns2:trackingVariable>
+                    <ns2:role>tracking_var_3</ns2:role>
+                    <ns2:primary>false</ns2:primary>
+                    <ns2:name>tracking_var_3</ns2:name>
+                    <ns2:messageContextRef refUri="messagecontext_18"/>
+                    <ns2:output name="output_12">
+                        <ns2:messageContextRef refUri="messagecontext_11"/>
+                    </ns2:output>
+                </ns2:trackingVariable>
+            </ns2:trackingVariableGroup>
+        </ns2:processor>
+        <ns2:processor name="processor_78">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_81">
+                <ns2:resource name="resource_82" location="../resources/processor_78/resourcegroup_81/req_802e17d3ad154c64b0a9ee7f8223c7ef.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_3985">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalIMLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_79">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_80">
+                <ns2:messageContextRef refUri="messagecontext_72"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_83">
+            <ns2:type>catchAll</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_84">
+                <ns2:resource name="resource_85" location="../resources/processor_83/resourcegroup_84/ICSFault.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_87">
+                <ns2:messageContextRef refUri="messagecontext_86"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_88">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_884">
+                <ns2:resource name="resource_885" location="../resources/processor_88/resourcegroup_884/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_86">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GlobalFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_92">
+                <ns2:messageContextRef refUri="messagecontext_91"/>
+            </ns2:output>
+            <ns2:property name="dependent-dvms" value="AE_Common_Error_Messages_Lookup"/>
+        </ns2:processor>
+        <ns2:processor name="processor_95">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_892">
+                <ns2:resource name="resource_893" location="../resources/processor_95/resourcegroup_892/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_99">
+                <ns2:messageContextRef refUri="messagecontext_98"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_102">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_890">
+                <ns2:resource name="resource_891" location="../resources/processor_102/resourcegroup_890/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_106">
+                <ns2:messageContextRef refUri="messagecontext_105"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_109">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_110">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_111">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_894">
+                    <ns2:resource name="resource_895" location="../resources/processor_109/output_111/resourcegroup_894/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_120">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_870">
+                <ns2:resource name="resource_871" location="../resources/processor_120/resourcegroup_870/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_123">
+                <ns2:messageContextRef refUri="messagecontext_91"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_126">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_128">
+                <ns2:messageContextRef refUri="messagecontext_127"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalClientID"/>
+        </ns2:processor>
+        <ns2:processor name="processor_133">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_910">
+                <ns2:resource name="resource_911" location="../resources/processor_133/resourcegroup_910/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_136">
+                <ns2:messageContextRef refUri="messagecontext_98"/>
+            </ns2:output>
+            <ns2:property name="dependent-dvms" value="AE_Common_Error_Messages_Lookup"/>
+        </ns2:processor>
+        <ns2:processor name="processor_139">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_902">
+                <ns2:resource name="resource_903" location="../resources/processor_139/resourcegroup_902/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_142">
+                <ns2:messageContextRef refUri="messagecontext_105"/>
+            </ns2:output>
+            <ns2:property name="dependent-dvms" value="AE_Common_Error_Messages_Lookup"/>
+        </ns2:processor>
+        <ns2:processor name="processor_145">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_886">
+                <ns2:resource name="resource_887" location="../resources/processor_145/resourcegroup_886/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_148">
+                <ns2:messageContextRef refUri="messagecontext_11"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_151">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_86">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GlobalFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_152">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_153">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_900">
+                    <ns2:resource name="resource_901" location="../resources/processor_151/output_153/resourcegroup_900/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_158">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_906">
+                <ns2:resource name="resource_907" location="../resources/processor_158/resourcegroup_906/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_86">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GlobalFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_105">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorDesc</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_161">
+                <ns2:messageContextRef refUri="messagecontext_105"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_164">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_165">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_166">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2633">
+                    <ns2:resource name="resource_2634" location="../resources/processor_164/output_166/resourcegroup_2633/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:property name="dependent-dvms" value="AE_Common_Error_Messages_Lookup"/>
+        </ns2:processor>
+        <ns2:processor name="processor_175">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3894">
+                <ns2:resource name="resource_3895" location="../resources/processor_175/resourcegroup_3894/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_178">
+                <ns2:messageContextRef refUri="messagecontext_9"/>
+            </ns2:output>
+            <ns2:property name="dependent-dvms" value="AE_Common_Lookup,AE_Common_Error_Messages_Lookup"/>
+        </ns2:processor>
+        <ns2:processor name="processor_183">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_904">
+                <ns2:resource name="resource_905" location="../resources/processor_183/resourcegroup_904/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_186">
+                <ns2:messageContextRef refUri="messagecontext_11"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_201">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_204">
+                <ns2:resource name="resource_205" location="../resources/processor_201/resourcegroup_204/req_45f4fda7853c4eb5afb3f8218f7b678c.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_91">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorCode</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_105">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorDesc</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_98">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>errorType</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_202">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_203">
+                <ns2:messageContextRef refUri="messagecontext_195"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_233">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_234">
+                <ns2:resource name="resource_235" location="../resources/processor_233/resourcegroup_234/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:property name="dependent-dvms" value="AE_iSup_Common_Lookup"/>
+            <ns2:processorName>InitializeGlobalVariables</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_236">
+            <ns2:type>for</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_916">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_917" location="../resources/processor_236/resourcegroup_916/generated.wsdl" type="wsdl">
+                    <ns2:property name="parentRefUri" value="application_13/outbound_14/resourcegroup_15/resource_17"/>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2296">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2297" location="../resources/processor_236/resourcegroup_2296/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_919">
+                <ns2:messageContextRef refUri="messagecontext_918"/>
+            </ns2:output>
+            <ns2:property name="parallel" value="false"/>
+            <ns2:processorName>ForLoopRequstLines</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_314">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2469">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetProductDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_315">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_316">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2505">
+                    <ns2:resource name="resource_2506" location="../resources/processor_314/output_316/resourcegroup_2505/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_325">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_326">
+                <ns2:resource name="resource_327" location="../resources/processor_325/resourcegroup_326/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignQuantity</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_328">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_330">
+                <ns2:messageContextRef refUri="messagecontext_329"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalTransferedQty"/>
+        </ns2:processor>
+        <ns2:processor name="processor_331">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2469">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetProductDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_332">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_333">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2545">
+                    <ns2:resource name="resource_2546" location="../resources/processor_331/output_333/resourcegroup_2545/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_349">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2547">
+                    <ns2:resource name="resource_2548" location="../resources/processor_331/output_349/resourcegroup_2547/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_359">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2549">
+                    <ns2:resource name="resource_2550" location="../resources/processor_331/output_359/resourcegroup_2549/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_377">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2551">
+                    <ns2:resource name="resource_2552" location="../resources/processor_331/output_377/resourcegroup_2551/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_395">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2553">
+                    <ns2:resource name="resource_2554" location="../resources/processor_331/output_395/resourcegroup_2553/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_346">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_347">
+                <ns2:resource name="resource_348" location="../resources/processor_346/resourcegroup_347/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignTransferedQtyWithProductNatural</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_356">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_357">
+                <ns2:resource name="resource_358" location="../resources/processor_356/resourcegroup_357/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignTransferedQtyWithProductStandard</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_374">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_375">
+                <ns2:resource name="resource_376" location="../resources/processor_374/resourcegroup_375/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignTransferedQtyWithProductWeight</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_392">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_393">
+                <ns2:resource name="resource_394" location="../resources/processor_392/resourcegroup_393/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignProductWeightInTonnes</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_400">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_401">
+                <ns2:resource name="resource_402" location="../resources/processor_400/resourcegroup_401/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignProductNaturalReqQty</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_523">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_524">
+                <ns2:resource name="resource_525" location="../resources/processor_523/resourcegroup_524/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2469">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>GetProductDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3985">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalIMLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3976">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalIMLine</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AppendToModifiedIMLinesArray</ns2:processorName>
+            <ns2:processorDescription></ns2:processorDescription>
+        </ns2:processor>
+        <ns2:processor name="processor_847">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2469">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetProductDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_848">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_849">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2501">
+                    <ns2:resource name="resource_2502" location="../resources/processor_847/output_849/resourcegroup_2501/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_858">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_859">
+                <ns2:resource name="resource_860" location="../resources/processor_858/resourcegroup_859/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2415">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2416" location="../resources/processor_858/resourcegroup_2415/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_2417" location="../resources/processor_858/resourcegroup_2415/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_862">
+                <ns2:messageContextRef refUri="messagecontext_861"/>
+            </ns2:output>
+            <ns2:processorName>invalidProductCode</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_940">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_943">
+                <ns2:resource name="resource_944" location="../resources/processor_940/resourcegroup_943/req_5a9a45d952db46509271ea2602f7a6c9.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:input name="input_941">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_942">
+                <ns2:messageContextRef refUri="messagecontext_934"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_945">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:input name="input_946">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_947">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3961">
+                    <ns2:resource name="resource_3962" location="../resources/processor_945/output_947/resourcegroup_3961/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_960">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_936">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetPickSlipDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_961">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_962">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3374">
+                    <ns2:resource name="resource_3375" location="../resources/processor_960/output_962/resourcegroup_3374/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_3599">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3602">
+                    <ns2:resource name="resource_3603" location="../resources/processor_960/output_3599/resourcegroup_3602/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_983">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_986">
+                <ns2:resource name="resource_987" location="../resources/processor_983/resourcegroup_986/req_1ea8a787ae3d4928837ac17ff20d14aa.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_3146">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalPickLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_936">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetPickSlipDetails</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_984">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_985">
+                <ns2:messageContextRef refUri="messagecontext_977"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_1000">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1003">
+                <ns2:resource name="resource_1004" location="../resources/processor_1000/resourcegroup_1003/req_e51366843013475eaf81c71c165dd19f.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_1008">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ESSJobDefinitionName</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1015">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ESSJobPackageName</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2131">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalMRNumber</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2134">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalOrgID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3464">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetPickSlipDetail</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3462">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetPickSlipDetail_REQUEST</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2089">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItem</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3137">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalPickLine</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3146">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalPickLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_7">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_1</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_9">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_2</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_11">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_3</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_1001">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_1002">
+                <ns2:messageContextRef refUri="messagecontext_994"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_1005">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1055">
+                <ns2:resource name="resource_1056" location="../resources/processor_1005/resourcegroup_1055/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_1009">
+                <ns2:messageContextRef refUri="messagecontext_1008"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_1012">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1059">
+                <ns2:resource name="resource_1060" location="../resources/processor_1012/resourcegroup_1059/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_1016">
+                <ns2:messageContextRef refUri="messagecontext_1015"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_1084">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1087">
+                <ns2:resource name="resource_1088" location="../resources/processor_1084/resourcegroup_1087/req_27ff609368064cfcadbfd85018b05278.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_4021">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>currentProduct</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_1085">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_1086">
+                <ns2:messageContextRef refUri="messagecontext_1074"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_1089">
+            <ns2:type>stageFile</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1090">
+                <ns2:resource name="resource_1091" location="../resources/processor_1089/resourcegroup_1090/WriteLotsToStage_REQUEST.wsdl" type="wsdl"/>
+                <ns2:resource name="resource_1092" location="../resources/processor_1089/resourcegroup_1090/WriteLotsToStage_REQUEST.jca" type="jca"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_4072">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_4073" location="../resources/processor_1089/resourcegroup_4072/WRITE_FILENAMEexpr.properties" type="properties">
+                    <ns2:role>WRITE_FILENAME</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_4074" location="../resources/processor_1089/resourcegroup_4072/WRITE_DIRNAMEexpr.properties" type="properties">
+                    <ns2:role>WRITE_DIRNAME</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:input name="input_1094">
+                <ns2:messageContextRef refUri="messagecontext_1093"/>
+            </ns2:input>
+            <ns2:output name="output_1096">
+                <ns2:messageContextRef refUri="messagecontext_1095"/>
+            </ns2:output>
+            <ns2:property name="operation" value="Write"/>
+            <ns2:processorName>WriteLotsToStage</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_1103">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1106">
+                <ns2:resource name="resource_1107" location="../resources/processor_1103/resourcegroup_1106/req_6278d7eaa54f4ec8b10860bf1653035a.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_1076">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetLots</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_1104">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_1105">
+                <ns2:messageContextRef refUri="messagecontext_1093"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_1148">
+            <ns2:type>stageFile</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1149">
+                <ns2:resource name="resource_1150" location="../resources/processor_1148/resourcegroup_1149/ReadLotsToStage_REQUEST.wsdl" type="wsdl"/>
+                <ns2:resource name="resource_1151" location="../resources/processor_1148/resourcegroup_1149/ReadLotsToStage_REQUEST.jca" type="jca"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_4070">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_4071" location="../resources/processor_1148/resourcegroup_4070/READ_FILE_REFERENCEexpr.properties" type="properties">
+                    <ns2:role>READ_FILE_REFERENCE</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1095">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>WriteLotsToStage</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_1153">
+                <ns2:messageContextRef refUri="messagecontext_1152"/>
+            </ns2:output>
+            <ns2:property name="operation" value="Read"/>
+            <ns2:property name="chunk" value="false"/>
+            <ns2:processorName>ReadLotsToStage</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_1161">
+            <ns2:type>for</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1173">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_1174" location="../resources/processor_1161/resourcegroup_1173/generated.wsdl" type="wsdl">
+                    <ns2:property name="parentRefUri" value="processor_1148/resourcegroup_1149/resource_1150"/>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_1977">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_1978" location="../resources/processor_1161/resourcegroup_1977/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1152">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ReadLotsToStage</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_1176">
+                <ns2:messageContextRef refUri="messagecontext_1175"/>
+            </ns2:output>
+            <ns2:property name="parallel" value="false"/>
+            <ns2:processorName>ForEachLot</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_1193">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_1152">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ReadLotsToStage</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_1194">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_1195">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3046">
+                    <ns2:resource name="resource_3047" location="../resources/processor_1193/output_1195/resourcegroup_3046/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_1204">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1205">
+                <ns2:resource name="resource_1206" location="../resources/processor_1204/resourcegroup_1205/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4021">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>currentProduct</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignRemainingQunatity</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_1546">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3703">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetATRDetail</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_1547">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_1548">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3714">
+                    <ns2:resource name="resource_3715" location="../resources/processor_1546/output_1548/resourcegroup_3714/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_1599">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3716">
+                    <ns2:resource name="resource_3717" location="../resources/processor_1546/output_1599/resourcegroup_3716/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_1583">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1584">
+                <ns2:resource name="resource_1585" location="../resources/processor_1583/resourcegroup_1584/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignQuantity1</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_1604">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_1605">
+                <ns2:resource name="resource_1606" location="../resources/processor_1604/resourcegroup_1605/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3703">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>GetATRDetail</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignQuantity2</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2010">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_2012">
+                <ns2:messageContextRef refUri="messagecontext_2011"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalLotQty"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2044">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_2046">
+                <ns2:messageContextRef refUri="messagecontext_2045"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalRemainQty"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2084">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2087">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_2088" location="../resources/processor_2084/resourcegroup_2087/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2091">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2092" location="../resources/processor_2084/resourcegroup_2091/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_2090">
+                <ns2:messageContextRef refUri="messagecontext_2089"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalLotItem"/>
+            <ns2:property name="parentRefUri" value="application_928/inbound_929/resourcegroup_930/resource_933"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2100">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2101">
+                <ns2:resource name="resource_2102" location="../resources/processor_2100/resourcegroup_2101/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_2089">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotItem</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1175">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>currentLot</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignFinalLotLine</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2130">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_2132">
+                <ns2:messageContextRef refUri="messagecontext_2131"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalMRNumber"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2133">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_2135">
+                <ns2:messageContextRef refUri="messagecontext_2134"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalOrgID"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2141">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2142">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2143">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2150">
+                    <ns2:resource name="resource_2151" location="../resources/processor_2141/output_2143/resourcegroup_2150/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2196">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2197">
+                <ns2:resource name="resource_2198" location="../resources/processor_2196/resourcegroup_2197/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2247">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2248" location="../resources/processor_2196/resourcegroup_2247/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_2249" location="../resources/processor_2196/resourcegroup_2247/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_979">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ConfirmPickSlip</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_2200">
+                <ns2:messageContextRef refUri="messagecontext_2199"/>
+            </ns2:output>
+            <ns2:processorName>ThrowConfirmPickSlipFailure</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2207">
+            <ns2:type>catchAll</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2208">
+                <ns2:resource name="resource_2209" location="../resources/processor_2207/resourcegroup_2208/ICSFault.xsd" type="xsd"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_2211">
+                <ns2:messageContextRef refUri="messagecontext_2210"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2212">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2213">
+                <ns2:resource name="resource_2214" location="../resources/processor_2212/resourcegroup_2213/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2224">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2225" location="../resources/processor_2212/resourcegroup_2224/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_2226" location="../resources/processor_2212/resourcegroup_2224/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2210">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ConfirmPickSlipScopeFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_2216">
+                <ns2:messageContextRef refUri="messagecontext_2215"/>
+            </ns2:output>
+            <ns2:processorName>ThrowConfirmPickSlipFailureFH</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2231">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_979">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ConfirmPickSlip</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2232">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2233">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2240">
+                    <ns2:resource name="resource_2241" location="../resources/processor_2231/output_2233/resourcegroup_2240/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2250">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2251">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2252">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_2259">
+                    <ns2:resource name="resource_2260" location="../resources/processor_2250/output_2252/resourcegroup_2259/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2261">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2262">
+                <ns2:resource name="resource_2263" location="../resources/processor_2261/resourcegroup_2262/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3925">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3926" location="../resources/processor_2261/resourcegroup_3925/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_2265">
+                <ns2:messageContextRef refUri="messagecontext_2264"/>
+            </ns2:output>
+            <ns2:processorName>insufficientInventory</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2326">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2329">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_2330" location="../resources/processor_2326/resourcegroup_2329/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_2333">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_2334" location="../resources/processor_2326/resourcegroup_2333/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_2332">
+                <ns2:messageContextRef refUri="messagecontext_2331"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalLotItemArray"/>
+            <ns2:property name="parentRefUri" value="application_928/inbound_929/resourcegroup_930/resource_933"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2342">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_3703">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetATRDetail</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2343">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2344">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3725">
+                    <ns2:resource name="resource_3726" location="../resources/processor_2342/output_2344/resourcegroup_3725/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2473">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2476">
+                <ns2:resource name="resource_2477" location="../resources/processor_2473/resourcegroup_2476/req_ae9142cfa51046fbac4806f6256114e0.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_918">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ForLoopRequstLinesVar</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2089">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItem</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2131">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalMRNumber</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2134">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalOrgID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_7">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_1</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_9">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_2</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_11">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_3</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2474">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2475">
+                <ns2:messageContextRef refUri="messagecontext_2467"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2577">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2580">
+                <ns2:resource name="resource_2581" location="../resources/processor_2577/resourcegroup_2580/req_a1e42c9c151e40478ecd0b2834f2b2d1.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_996">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>RunESSJobs</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1008">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ESSJobDefinitionName</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_1015">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>ESSJobPackageName</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_994">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>RunESSJobs_REQUEST</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2089">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItem</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2131">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalMRNumber</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2134">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalOrgID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_7">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_1</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_9">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_2</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_11">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_3</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2578">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2579">
+                <ns2:messageContextRef refUri="messagecontext_2571"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2764">
+            <ns2:type>wait</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3921">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3922" location="../resources/processor_2764/resourcegroup_3921/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:processorName>WaitESSJobToTakeEffect</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2907">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2908">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2909">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3491">
+                    <ns2:resource name="resource_3492" location="../resources/processor_2907/output_2909/resourcegroup_3491/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_2918">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2919">
+                <ns2:resource name="resource_2920" location="../resources/processor_2918/resourcegroup_2919/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3929">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3930" location="../resources/processor_2918/resourcegroup_3929/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_2922">
+                <ns2:messageContextRef refUri="messagecontext_2921"/>
+            </ns2:output>
+            <ns2:processorName>ESSJobinvocationFailure</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_2965">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_2968">
+                <ns2:resource name="resource_2969" location="../resources/processor_2965/resourcegroup_2968/req_e5567795000a45f7ac49808e0d7639f9.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3976">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalIMLine</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3985">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalIMLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2089">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItem</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2011">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalLotQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2131">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalMRNumber</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2134">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalOrgID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3137">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalPickLine</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3146">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalPickLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2045">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalRemainQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_329">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalTransferedQty</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>self</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_7">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_1</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_9">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_2</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_11">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>tracking_var_3</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2966">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2967">
+                <ns2:messageContextRef refUri="messagecontext_2959"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_2970">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_2961">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>getMovementRequest</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_2971">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_2972">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3003">
+                    <ns2:resource name="resource_3004" location="../resources/processor_2970/output_2972/resourcegroup_3003/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_3005">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3008">
+                    <ns2:resource name="resource_3009" location="../resources/processor_2970/output_3005/resourcegroup_3008/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3036">
+            <ns2:type>for</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_4019">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_4020" location="../resources/processor_3036/resourcegroup_4019/generated.wsdl" type="wsdl">
+                    <ns2:property name="parentRefUri" value="processor_3980/resourcegroup_3983/resource_3984"/>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_4063">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_4064" location="../resources/processor_3036/resourcegroup_4063/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3985">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalIMLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_4022">
+                <ns2:messageContextRef refUri="messagecontext_4021"/>
+            </ns2:output>
+            <ns2:property name="parallel" value="false"/>
+            <ns2:processorName>ForEachProduct</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3132">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3135">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_3136" location="../resources/processor_3132/resourcegroup_3135/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3139">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3140" location="../resources/processor_3132/resourcegroup_3139/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_3138">
+                <ns2:messageContextRef refUri="messagecontext_3137"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalPickLine"/>
+            <ns2:property name="parentRefUri" value="application_928/inbound_929/resourcegroup_930/resource_933"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3141">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3144">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_3145" location="../resources/processor_3141/resourcegroup_3144/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3148">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3149" location="../resources/processor_3141/resourcegroup_3148/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_3147">
+                <ns2:messageContextRef refUri="messagecontext_3146"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalPickLineArray"/>
+            <ns2:property name="parentRefUri" value="application_928/inbound_929/resourcegroup_930/resource_933"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3150">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3151">
+                <ns2:resource name="resource_3152" location="../resources/processor_3150/resourcegroup_3151/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_3137">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalPickLine</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3146">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalPickLineArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4021">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>currentProduct</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignFinalLineArray</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3203">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3210">
+                <ns2:resource name="resource_3211" location="../resources/processor_3203/resourcegroup_3210/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:output name="output_3207">
+                <ns2:messageContextRef refUri="messagecontext_3206"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3227">
+            <ns2:type>while</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3486">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3487" location="../resources/processor_3227/resourcegroup_3486/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3206">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>var_i</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>UntilSuccessOrFailure</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3252">
+            <ns2:type>assignment</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3258">
+                <ns2:resource name="resource_3259" location="../resources/processor_3252/resourcegroup_3258/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3206">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>var_i</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_3255">
+                <ns2:messageContextRef refUri="messagecontext_3206"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3274">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>simpleType</ns2:role>
+            <ns2:output name="output_3276">
+                <ns2:messageContextRef refUri="messagecontext_3275"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalJobStatus"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3282">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3283">
+                <ns2:resource name="resource_3284" location="../resources/processor_3282/resourcegroup_3283/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignInitialVariable</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3322">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3323">
+                <ns2:resource name="resource_3324" location="../resources/processor_3322/resourcegroup_3323/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_3275">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_2573">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>getESSJobStatus</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>AssignUpdateVariable</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3468">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3471">
+                <ns2:resource name="resource_3472" location="../resources/processor_3468/resourcegroup_3471/req_ce6fbbc68fbd496d99c986cd99e1bb38.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:input name="input_3469">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_3470">
+                <ns2:messageContextRef refUri="messagecontext_3462"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3473">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_3464">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>GetPickSlipDetail</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_3474">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_3475">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3482">
+                    <ns2:resource name="resource_3483" location="../resources/processor_3473/output_3475/resourcegroup_3482/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3493">
+            <ns2:type>stitch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3494">
+                <ns2:resource name="resource_3495" location="../resources/processor_3493/resourcegroup_3494/stitch.json" type="undefined"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_2331">
+                <ns2:role>source-and-target</ns2:role>
+                <ns2:subRole>globalLotItemArray</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:processorName>RemoveItemLot</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3604">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3605">
+                <ns2:resource name="resource_3606" location="../resources/processor_3604/resourcegroup_3605/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3615">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3616" location="../resources/processor_3604/resourcegroup_3615/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_3608">
+                <ns2:messageContextRef refUri="messagecontext_3607"/>
+            </ns2:output>
+            <ns2:processorName>ThrowPickSlipNotFoundError</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3617">
+            <ns2:type>catch</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_76"/>
+            <ns2:output name="output_3619">
+                <ns2:messageContextRef refUri="messagecontext_3618"/>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3620">
+            <ns2:type>contentBasedRouter</ns2:type>
+            <ns2:role>router:request-post-es</ns2:role>
+            <ns2:resourceRef refUri="messagecontext_3618">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>CurrentFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_3621">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_3622">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3648">
+                    <ns2:resource name="resource_3649" location="../resources/processor_3620/output_3622/resourcegroup_3648/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+            <ns2:output name="output_3662">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+                <ns2:resourceGroup name="resourcegroup_3665">
+                    <ns2:resource name="resource_3666" location="../resources/processor_3620/output_3662/resourcegroup_3665/expr.properties" type="properties"/>
+                </ns2:resourceGroup>
+            </ns2:output>
+        </ns2:processor>
+        <ns2:processor name="processor_3631">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3632">
+                <ns2:resource name="resource_3633" location="../resources/processor_3631/resourcegroup_3632/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3659">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3660" location="../resources/processor_3631/resourcegroup_3659/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_3661" location="../resources/processor_3631/resourcegroup_3659/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3618">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>CurrentFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_3635">
+                <ns2:messageContextRef refUri="messagecontext_3634"/>
+            </ns2:output>
+            <ns2:processorName>BadRequest</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3667">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3668">
+                <ns2:resource name="resource_3669" location="../resources/processor_3667/resourcegroup_3668/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3679">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3680" location="../resources/processor_3667/resourcegroup_3679/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_3681" location="../resources/processor_3667/resourcegroup_3679/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_3618">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>CurrentFaultObject</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_3671">
+                <ns2:messageContextRef refUri="messagecontext_3670"/>
+            </ns2:output>
+            <ns2:processorName>UnhandledError</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3707">
+            <ns2:type>transformer</ns2:type>
+            <ns2:role>transformer:response-map</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3710">
+                <ns2:resource name="resource_3711" location="../resources/processor_3707/resourcegroup_3710/req_01a838a632bd418089173ed59979b504.xsl" type="xslt"/>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_1175">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>currentLot</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_4021">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>currentProduct</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:input name="input_3708">
+                <ns2:messageContextRef refUri="messagecontext_18"/>
+            </ns2:input>
+            <ns2:output name="output_3709">
+                <ns2:messageContextRef refUri="messagecontext_3701"/>
+            </ns2:output>
+            <ns2:property name="has-mappings" value="true"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3833">
+            <ns2:type>throw</ns2:type>
+            <ns2:role>undefined</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3834">
+                <ns2:resource name="resource_3835" location="../resources/processor_3833/resourcegroup_3834/ICSFault.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_3966">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_3967" location="../resources/processor_3833/resourcegroup_3966/CODEexpr.properties" type="properties">
+                    <ns2:role>CODE</ns2:role>
+                </ns2:resource>
+                <ns2:resource name="resource_3968" location="../resources/processor_3833/resourcegroup_3966/DETAILSexpr.properties" type="properties">
+                    <ns2:role>DETAILS</ns2:role>
+                </ns2:resource>
+            </ns2:resourceGroup>
+            <ns2:resourceRef refUri="messagecontext_18">
+                <ns2:role>primary-source</ns2:role>
+            </ns2:resourceRef>
+            <ns2:resourceRef refUri="messagecontext_127">
+                <ns2:role>secondary-source</ns2:role>
+                <ns2:subRole>globalClientID</ns2:subRole>
+            </ns2:resourceRef>
+            <ns2:output name="output_3837">
+                <ns2:messageContextRef refUri="messagecontext_3836"/>
+            </ns2:output>
+            <ns2:processorName>BadRequestClosedMR</ns2:processorName>
+        </ns2:processor>
+        <ns2:processor name="processor_3971">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3974">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_3975" location="../resources/processor_3971/resourcegroup_3974/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_4059">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_4060" location="../resources/processor_3971/resourcegroup_4059/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_3977">
+                <ns2:messageContextRef refUri="messagecontext_3976"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalIMLine"/>
+            <ns2:property name="parentRefUri" value="application_66/inbound_67/resourcegroup_68/resource_71"/>
+        </ns2:processor>
+        <ns2:processor name="processor_3980">
+            <ns2:type>globalVariableDefinition</ns2:type>
+            <ns2:role>complexType</ns2:role>
+            <ns2:resourceGroup name="resourcegroup_3983">
+                <ns2:role>generatedArtifacts</ns2:role>
+                <ns2:resource name="resource_3984" location="../resources/processor_3980/resourcegroup_3983/generated.wsdl" type="wsdl"/>
+            </ns2:resourceGroup>
+            <ns2:resourceGroup name="resourcegroup_4061">
+                <ns2:role>exprBuilderProperties</ns2:role>
+                <ns2:resource name="resource_4062" location="../resources/processor_3980/resourcegroup_4061/expr.properties" type="properties"/>
+            </ns2:resourceGroup>
+            <ns2:output name="output_3986">
+                <ns2:messageContextRef refUri="messagecontext_3985"/>
+            </ns2:output>
+            <ns2:property name="variableName" value="globalIMLineArray"/>
+            <ns2:property name="parentRefUri" value="application_66/inbound_67/resourcegroup_68/resource_71"/>
+        </ns2:processor>
+        <ns2:messageContext name="messagecontext_4">
+            <ns2:resourceRef refUri="processor_1/resourcegroup_2/resource_3"/>
+            <ns2:rootElement elementName="metadata" namespace="http://www.oracle.com/2014/03/ic/integration/metadata"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_7">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_9">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_11">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_18">
+            <ns2:resourceRef refUri="application_13/outbound_14/resourcegroup_15/resource_17"/>
+            <ns2:rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_72">
+            <ns2:resourceRef refUri="application_66/inbound_67/resourcegroup_68/resource_71"/>
+            <ns2:rootElement elementName="create" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="createRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_74">
+            <ns2:resourceRef refUri="application_66/inbound_67/resourcegroup_68/resource_71"/>
+            <ns2:rootElement elementName="createResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="createResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_76">
+            <ns2:resourceRef refUri="application_66/inbound_67/resourcegroup_68/resource_71"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_86">
+            <ns2:resourceRef refUri="processor_83/resourcegroup_84/resource_85"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_91">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_98">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_105">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_127">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_195">
+            <ns2:resourceRef refUri="application_189/inbound_190/resourcegroup_191/resource_194"/>
+            <ns2:rootElement elementName="POST" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="POSTRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_197">
+            <ns2:resourceRef refUri="application_189/inbound_190/resourcegroup_191/resource_194"/>
+            <ns2:rootElement elementName="POSTResponse" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="POSTResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_199">
+            <ns2:resourceRef refUri="application_189/inbound_190/resourcegroup_191/resource_194"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/collocatedics/CallCommonErrorNotifyHandler"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/CallCommonErrorNotifyHandler_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_329">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_861">
+            <ns2:resourceRef refUri="processor_858/resourcegroup_859/resource_860"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_918">
+            <ns2:resourceRef refUri="processor_236/resourcegroup_916/resource_917"/>
+            <ns2:rootElement elementName="lineDetails" namespace="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement/types"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_934">
+            <ns2:resourceRef refUri="application_928/inbound_929/resourcegroup_930/resource_933"/>
+            <ns2:rootElement elementName="getAll" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_936">
+            <ns2:resourceRef refUri="application_928/inbound_929/resourcegroup_930/resource_933"/>
+            <ns2:rootElement elementName="getAllResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_938">
+            <ns2:resourceRef refUri="application_928/inbound_929/resourcegroup_930/resource_933"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_977">
+            <ns2:resourceRef refUri="application_971/inbound_972/resourcegroup_973/resource_976"/>
+            <ns2:rootElement elementName="create" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="createRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_979">
+            <ns2:resourceRef refUri="application_971/inbound_972/resourcegroup_973/resource_976"/>
+            <ns2:rootElement elementName="createResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="createResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_981">
+            <ns2:resourceRef refUri="application_971/inbound_972/resourcegroup_973/resource_976"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/ConfirmPickSlip_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_994">
+            <ns2:resourceRef refUri="application_988/inbound_989/resourcegroup_990/resource_993"/>
+            <ns2:rootElement elementName="submitESSJobRequest" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="submitESSJobRequestRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_996">
+            <ns2:resourceRef refUri="application_988/inbound_989/resourcegroup_990/resource_993"/>
+            <ns2:rootElement elementName="submitESSJobRequestResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="submitESSJobRequestResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_998">
+            <ns2:resourceRef refUri="application_988/inbound_989/resourcegroup_990/resource_993"/>
+            <ns2:rootElement elementName="ServiceErrorMessage" namespace="http://xmlns.oracle.com/adf/svc/errors/"/>
+            <ns2:wsdlMessage messageName="ServiceException" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="ServiceException" namespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1008">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1015">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1074">
+            <ns2:resourceRef refUri="application_1068/inbound_1069/resourcegroup_1070/resource_1073"/>
+            <ns2:rootElement elementName="OutboundSOAPRequestDocument" namespace="http://xmlns.oracle.com/types/GetLots/1731600951472/OutboundSOAPRequestDocument"/>
+            <ns2:wsdlMessage messageName="runReportInput" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1076">
+            <ns2:resourceRef refUri="application_1068/inbound_1069/resourcegroup_1070/resource_1073"/>
+            <ns2:rootElement elementName="runReportResponse" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <ns2:wsdlMessage messageName="runReportOutput" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1078">
+            <ns2:resourceRef refUri="application_1068/inbound_1069/resourcegroup_1070/resource_1073"/>
+            <ns2:rootElement elementName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <ns2:wsdlMessage messageName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="AccessDeniedException"/>
+            <ns2:wsdlFault faultName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1080">
+            <ns2:resourceRef refUri="application_1068/inbound_1069/resourcegroup_1070/resource_1073"/>
+            <ns2:rootElement elementName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <ns2:wsdlMessage messageName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="OperationFailedException"/>
+            <ns2:wsdlFault faultName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1082">
+            <ns2:resourceRef refUri="application_1068/inbound_1069/resourcegroup_1070/resource_1073"/>
+            <ns2:rootElement elementName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <ns2:wsdlMessage messageName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="InvalidParametersException"/>
+            <ns2:wsdlFault faultName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1093">
+            <ns2:resourceRef refUri="processor_1089/resourcegroup_1090/resource_1091"/>
+            <ns2:rootElement elementName="Write" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteLotsToStage_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="WriteRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteLotsToStage_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1095">
+            <ns2:resourceRef refUri="processor_1089/resourcegroup_1090/resource_1091"/>
+            <ns2:rootElement elementName="WriteResponse" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteLotsToStage_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="WriteResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteLotsToStage_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1152">
+            <ns2:resourceRef refUri="processor_1148/resourcegroup_1149/resource_1150"/>
+            <ns2:rootElement elementName="ReadResponse" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadLotsToStage_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="ReadResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadLotsToStage_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_1175">
+            <ns2:resourceRef refUri="processor_1161/resourcegroup_1173/resource_1174"/>
+            <ns2:rootElement elementName="G_1" namespace="http://xmlns.oracle.com/cloud/adapter/nxsd/surrogate/ReadLotsToStage"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2011">
+            <ns2:rootElement elementName="double" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2045">
+            <ns2:rootElement elementName="double" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2089">
+            <ns2:resourceRef refUri="processor_2084/resourcegroup_2087/resource_2088"/>
+            <ns2:rootElement elementName="itemLots" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/PickSlipDetails"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2131">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2134">
+            <ns2:rootElement elementName="double" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2199">
+            <ns2:resourceRef refUri="processor_2196/resourcegroup_2197/resource_2198"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2210">
+            <ns2:resourceRef refUri="processor_2207/resourcegroup_2208/resource_2209"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2215">
+            <ns2:resourceRef refUri="processor_2212/resourcegroup_2213/resource_2214"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2264">
+            <ns2:resourceRef refUri="processor_2261/resourcegroup_2262/resource_2263"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2331">
+            <ns2:resourceRef refUri="processor_2326/resourcegroup_2329/resource_2330"/>
+            <ns2:rootElement elementName="pickLines" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2467">
+            <ns2:resourceRef refUri="application_2461/inbound_2462/resourcegroup_2463/resource_2466"/>
+            <ns2:rootElement elementName="getAll" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2469">
+            <ns2:resourceRef refUri="application_2461/inbound_2462/resourcegroup_2463/resource_2466"/>
+            <ns2:rootElement elementName="getAllResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2471">
+            <ns2:resourceRef refUri="application_2461/inbound_2462/resourcegroup_2463/resource_2466"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2571">
+            <ns2:resourceRef refUri="application_2565/inbound_2566/resourcegroup_2567/resource_2570"/>
+            <ns2:rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2573">
+            <ns2:resourceRef refUri="application_2565/inbound_2566/resourcegroup_2567/resource_2570"/>
+            <ns2:rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2575">
+            <ns2:resourceRef refUri="application_2565/inbound_2566/resourcegroup_2567/resource_2570"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/getESSJobStatus"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2921">
+            <ns2:resourceRef refUri="processor_2918/resourcegroup_2919/resource_2920"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2959">
+            <ns2:resourceRef refUri="application_2953/inbound_2954/resourcegroup_2955/resource_2958"/>
+            <ns2:rootElement elementName="getAll" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2961">
+            <ns2:resourceRef refUri="application_2953/inbound_2954/resourcegroup_2955/resource_2958"/>
+            <ns2:rootElement elementName="getAllResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_2963">
+            <ns2:resourceRef refUri="application_2953/inbound_2954/resourcegroup_2955/resource_2958"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/getMovementRequest_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3137">
+            <ns2:resourceRef refUri="processor_3132/resourcegroup_3135/resource_3136"/>
+            <ns2:rootElement elementName="pickLines" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3146">
+            <ns2:resourceRef refUri="processor_3141/resourcegroup_3144/resource_3145"/>
+            <ns2:rootElement elementName="items" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3206">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3275">
+            <ns2:rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3462">
+            <ns2:resourceRef refUri="application_3456/inbound_3457/resourcegroup_3458/resource_3461"/>
+            <ns2:rootElement elementName="getAll" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3464">
+            <ns2:resourceRef refUri="application_3456/inbound_3457/resourcegroup_3458/resource_3461"/>
+            <ns2:rootElement elementName="getAllResponse" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="getAllResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3466">
+            <ns2:resourceRef refUri="application_3456/inbound_3457/resourcegroup_3458/resource_3461"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3607">
+            <ns2:resourceRef refUri="processor_3604/resourcegroup_3605/resource_3606"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3618">
+            <ns2:resourceRef refUri="application_66/inbound_67/resourcegroup_68/resource_71"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3634">
+            <ns2:resourceRef refUri="processor_3631/resourcegroup_3632/resource_3633"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3670">
+            <ns2:resourceRef refUri="processor_3667/resourcegroup_3668/resource_3669"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3701">
+            <ns2:resourceRef refUri="application_3695/inbound_3696/resourcegroup_3697/resource_3700"/>
+            <ns2:rootElement elementName="execute" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3703">
+            <ns2:resourceRef refUri="application_3695/inbound_3696/resourcegroup_3697/resource_3700"/>
+            <ns2:rootElement elementName="executeResponse" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST/types"/>
+            <ns2:wsdlMessage messageName="executeResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3705">
+            <ns2:resourceRef refUri="application_3695/inbound_3696/resourcegroup_3697/resource_3700"/>
+            <ns2:rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/REST/GetATRDetail"/>
+            <ns2:wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST" partName="parameters"/>
+            <ns2:wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3836">
+            <ns2:resourceRef refUri="processor_3833/resourcegroup_3834/resource_3835"/>
+            <ns2:rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+            <ns2:wsdlMessage messageName="faultMessage" namespace="http://www.oracle.com/2014/03/ics/fault" partName="parameters"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3976">
+            <ns2:resourceRef refUri="processor_3971/resourcegroup_3974/resource_3975"/>
+            <ns2:rootElement elementName="lines" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_3985">
+            <ns2:resourceRef refUri="processor_3980/resourcegroup_3983/resource_3984"/>
+            <ns2:rootElement elementName="InventoryMovementRequests" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+        </ns2:messageContext>
+        <ns2:messageContext name="messagecontext_4021">
+            <ns2:resourceRef refUri="processor_3036/resourcegroup_4019/resource_4020"/>
+            <ns2:rootElement elementName="lines" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp"/>
+        </ns2:messageContext>
+        <ns2:commonNamespaceMaps>
+            <ns2:commonNamespaceMap prefix="ns190" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail/types"/>
+            <ns2:commonNamespaceMap prefix="ns194" namespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST/types"/>
+            <ns2:commonNamespaceMap prefix="ns171" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus_REQUEST/types"/>
+            <ns2:commonNamespaceMap prefix="ns170" namespace="http://xmlns.oracle.com/cloud/adapter/REST/getESSJobStatus/types"/>
+            <ns2:commonNamespaceMap prefix="fn" namespace="http://www.w3.org/2005/xpath-functions"/>
+            <ns2:commonNamespaceMap prefix="ns230" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/lines"/>
+            <ns2:commonNamespaceMap prefix="ns196" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests"/>
+            <ns2:commonNamespaceMap prefix="ns124" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types"/>
+            <ns2:commonNamespaceMap prefix="ns75" namespace="http://xmlns.oracle.com/cloud/adapter/nxsd/surrogate/ReadLotsToStage"/>
+            <ns2:commonNamespaceMap prefix="ns228" namespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+            <ns2:commonNamespaceMap prefix="ns83" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/PickSlipDetails"/>
+            <ns2:commonNamespaceMap prefix="ns109" namespace="http://xmlns.oracle.com/cloud/adapter/erp/GetProductDetails_REQUEST/types"/>
+            <ns2:commonNamespaceMap prefix="ns87" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/PickSlipDetails/pickLines"/>
+            <ns2:commonNamespaceMap prefix="ns21" namespace="http://xmlns.oracle.com/cloud/adapters/fscmRestApp"/>
+            <ns2:commonNamespaceMap prefix="dvm" namespace="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"/>
+            <ns2:commonNamespaceMap prefix="ns14" namespace="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement/types"/>
+        </ns2:commonNamespaceMaps>
+        <ns2:orchestration>
+            <ns2:integrationMetadata id="im0" refUri="processor_1"/>
+            <ns2:globalVariable id="gtv0" refUri="processor_126"/>
+            <ns2:globalVariable id="gtv1" refUri="processor_328"/>
+            <ns2:globalVariable id="gtv6" refUri="processor_2010"/>
+            <ns2:globalVariable id="gtv7" refUri="processor_2044"/>
+            <ns2:globalVariable id="gtv8" refUri="processor_2084"/>
+            <ns2:globalVariable id="gtv3" refUri="processor_2130"/>
+            <ns2:globalVariable id="gtv5" refUri="processor_2133"/>
+            <ns2:globalVariable id="gtv9" refUri="processor_2326"/>
+            <ns2:globalVariable id="gtv4" refUri="processor_3132"/>
+            <ns2:globalVariable id="gtv10" refUri="processor_3141"/>
+            <ns2:globalVariable id="gtv11" refUri="processor_3274"/>
+            <ns2:globalVariable id="gtv2" refUri="processor_3971"/>
+            <ns2:globalVariable id="gtv12" refUri="processor_3980"/>
+            <ns2:globalTry id="gt0">
+                <ns2:receive trackingRefUri="processor_6" id="r0" refUri="application_13/outbound_14/output_19"/>
+                <ns2:stitch id="sh0" refUri="processor_233"/>
+                <ns2:try id="t2" name="BuildIMLines">
+                    <ns2:for id="f0" refUri="processor_236">
+                        <ns2:transformer id="m10" refUri="processor_2473"/>
+                        <ns2:invoke id="i9" refUri="application_2461" name="Oracle ERP Cloud7"/>
+                        <ns2:router id="s5" refUri="processor_847">
+                            <ns2:route id="sc9" refUri="processor_847/output_849">
+                                <ns2:throw id="th0" refUri="processor_858"/>
+                            </ns2:route>
+                        </ns2:router>
+                        <ns2:stitch id="sh1" refUri="processor_325"/>
+                        <ns2:router id="s3" refUri="processor_314">
+                            <ns2:route id="sc3" refUri="processor_314/output_316">
+                                <ns2:router id="s4" refUri="processor_331">
+                                    <ns2:route id="sc4" refUri="processor_331/output_333">
+                                        <ns2:stitch id="sh2" refUri="processor_346"/>
+                                    </ns2:route>
+                                    <ns2:route id="sc5" refUri="processor_331/output_349">
+                                        <ns2:stitch id="sh3" refUri="processor_356"/>
+                                    </ns2:route>
+                                    <ns2:route id="sc6" refUri="processor_331/output_359">
+                                        <ns2:stitch id="sh4" refUri="processor_374"/>
+                                    </ns2:route>
+                                    <ns2:route id="sc7" refUri="processor_331/output_377">
+                                        <ns2:stitch id="sh5" refUri="processor_392"/>
+                                    </ns2:route>
+                                    <ns2:route id="sc8" refUri="processor_331/output_395">
+                                        <ns2:stitch id="sh6" refUri="processor_400"/>
+                                    </ns2:route>
+                                </ns2:router>
+                            </ns2:route>
+                        </ns2:router>
+                        <ns2:stitch id="sh8" refUri="processor_523"/>
+                    </ns2:for>
+                </ns2:try>
+                <ns2:try id="t0" name="CreateAndNotify">
+                    <ns2:transformer id="m7" refUri="processor_2965"/>
+                    <ns2:invoke id="i7" refUri="application_2953" name="Oracle ERP Cloud7"/>
+                    <ns2:router id="s15" refUri="processor_2970">
+                        <ns2:route id="sc20" refUri="processor_2970/output_2972">
+                            <ns2:transformer id="m0" refUri="processor_78"/>
+                            <ns2:invoke id="i0" refUri="application_66" name="Oracle ERP Cloud1"/>
+                        </ns2:route>
+                        <ns2:route id="sc21" refUri="processor_2970/output_3005">
+                            <ns2:throw id="th9" refUri="processor_3833"/>
+                        </ns2:route>
+                    </ns2:router>
+                    <ns2:catch id="tc0" refUri="processor_3617">
+                        <ns2:router id="s17" refUri="processor_3620">
+                            <ns2:route id="sc24" refUri="processor_3620/output_3622">
+                                <ns2:throw id="th7" refUri="processor_3631"/>
+                            </ns2:route>
+                            <ns2:route id="sc25" refUri="processor_3620/output_3662">
+                                <ns2:throw id="th8" refUri="processor_3667"/>
+                            </ns2:route>
+                        </ns2:router>
+                    </ns2:catch>
+                </ns2:try>
+                <ns2:router id="s6" refUri="processor_945">
+                    <ns2:route id="sc10" refUri="processor_945/output_947">
+                        <ns2:label id="l5" name="AssignESSJobParams">
+                            <ns2:assignment id="a10" refUri="processor_1005"/>
+                            <ns2:assignment id="a11" refUri="processor_1012"/>
+                        </ns2:label>
+                        <ns2:for id="f2" refUri="processor_3036">
+                            <ns2:transformer id="m6" refUri="processor_1084"/>
+                            <ns2:invoke id="i6" refUri="application_1068" name="SOAP1"/>
+                            <ns2:transformer id="m8" refUri="processor_1103"/>
+                            <ns2:stageFile id="sf0" refUri="processor_1089"/>
+                            <ns2:stageFile id="sf1" refUri="processor_1148"/>
+                            <ns2:router id="s8" refUri="processor_1193">
+                                <ns2:route id="sc12" refUri="processor_1193/output_1195">
+                                    <ns2:stitch id="sh10" refUri="processor_1204"/>
+                                    <ns2:for id="f1" refUri="processor_1161">
+                                        <ns2:router id="s10" refUri="processor_2141">
+                                            <ns2:route id="sc14" refUri="processor_2141/output_2143">
+                                                <ns2:transformer id="m12" refUri="processor_3707"/>
+                                                <ns2:invoke id="i11" refUri="application_3695" name="REST4"/>
+                                                <ns2:router id="s14" refUri="processor_2342">
+                                                    <ns2:route id="sc19" refUri="processor_2342/output_2344">
+                                                        <ns2:router id="s9" refUri="processor_1546">
+                                                            <ns2:route id="sc13" refUri="processor_1546/output_1548">
+                                                                <ns2:stitch id="sh12" refUri="processor_1583"/>
+                                                            </ns2:route>
+                                                            <ns2:route id="sc15" refUri="processor_1546/output_1599">
+                                                                <ns2:stitch id="sh13" refUri="processor_1604"/>
+                                                            </ns2:route>
+                                                        </ns2:router>
+                                                        <ns2:stitch id="sh11" refUri="processor_2100"/>
+                                                    </ns2:route>
+                                                </ns2:router>
+                                            </ns2:route>
+                                        </ns2:router>
+                                    </ns2:for>
+                                    <ns2:router id="s13" refUri="processor_2250">
+                                        <ns2:route id="sc18" refUri="processor_2250/output_2252">
+                                            <ns2:throw id="th3" refUri="processor_2261"/>
+                                        </ns2:route>
+                                    </ns2:router>
+                                </ns2:route>
+                            </ns2:router>
+                            <ns2:stitch id="sh14" refUri="processor_3150"/>
+                            <ns2:stitch id="sh17" refUri="processor_3493"/>
+                        </ns2:for>
+                        <ns2:transformer id="m9" refUri="processor_3468"/>
+                        <ns2:invoke id="i8" refUri="application_3456" name="Oracle ERP Cloud7"/>
+                        <ns2:router id="s16" refUri="processor_3473">
+                            <ns2:route id="sc22" refUri="processor_3473/output_3475">
+                                <ns2:transformer id="m5" refUri="processor_1000"/>
+                                <ns2:invoke id="i5" refUri="application_988" name="Oracle ERP Cloud5"/>
+                                <ns2:label id="l6" name="AssignInitialVar">
+                                    <ns2:assignment id="a12" refUri="processor_3203"/>
+                                </ns2:label>
+                                <ns2:stitch id="sh15" refUri="processor_3282"/>
+                                <ns2:while id="wh0" refUri="processor_3227">
+                                    <ns2:wait id="w0" refUri="processor_2764"/>
+                                    <ns2:transformer id="m2" refUri="processor_2577"/>
+                                    <ns2:invoke id="i2" refUri="application_2565" name="REST2"/>
+                                    <ns2:label id="l7" name="AssignUpdateVar">
+                                        <ns2:assignment id="a14" refUri="processor_3252"/>
+                                    </ns2:label>
+                                    <ns2:stitch id="sh16" refUri="processor_3322"/>
+                                </ns2:while>
+                                <ns2:router id="s11" refUri="processor_2907">
+                                    <ns2:route id="sc16" refUri="processor_2907/output_2909">
+                                        <ns2:throw id="th5" refUri="processor_2918"/>
+                                    </ns2:route>
+                                </ns2:router>
+                            </ns2:route>
+                        </ns2:router>
+                        <ns2:transformer id="m3" refUri="processor_940"/>
+                        <ns2:invoke id="i3" refUri="application_928" name="Oracle ERP Cloud3"/>
+                        <ns2:router id="s7" refUri="processor_960">
+                            <ns2:route id="sc11" refUri="processor_960/output_962">
+                                <ns2:try id="t1" name="ConfirmPickSlipScope">
+                                    <ns2:transformer id="m4" refUri="processor_983"/>
+                                    <ns2:invoke id="i4" refUri="application_971" name="Oracle ERP Cloud4"/>
+                                    <ns2:router id="s12" refUri="processor_2231">
+                                        <ns2:route id="sc17" refUri="processor_2231/output_2233">
+                                            <ns2:throw id="th1" refUri="processor_2196"/>
+                                        </ns2:route>
+                                    </ns2:router>
+                                    <ns2:catchAll id="ta1" refUri="processor_2207">
+                                        <ns2:throw id="th2" refUri="processor_2212"/>
+                                    </ns2:catchAll>
+                                </ns2:try>
+                            </ns2:route>
+                            <ns2:route id="sc23" refUri="processor_960/output_3599">
+                                <ns2:throw id="th6" refUri="processor_3604"/>
+                            </ns2:route>
+                        </ns2:router>
+                    </ns2:route>
+                </ns2:router>
+                <ns2:stop id="st0"/>
+                <ns2:catchAll id="ta0" refUri="processor_83">
+                    <ns2:label id="l0" name="AssignErrorLookupCode">
+                        <ns2:assignment id="a0" refUri="processor_88"/>
+                        <ns2:assignment id="a1" refUri="processor_95"/>
+                        <ns2:assignment id="a2" refUri="processor_102"/>
+                    </ns2:label>
+                    <ns2:router id="s0" refUri="processor_109">
+                        <ns2:route id="sc0" refUri="processor_109/output_111">
+                            <ns2:label id="l1" name="AssignUnhandledErrorCode">
+                                <ns2:assignment id="a3" refUri="processor_120"/>
+                            </ns2:label>
+                        </ns2:route>
+                    </ns2:router>
+                    <ns2:label id="l2" name="AssignErrorDetails">
+                        <ns2:assignment id="a4" refUri="processor_133"/>
+                        <ns2:assignment id="a5" refUri="processor_139"/>
+                        <ns2:assignment id="a6" refUri="processor_145"/>
+                    </ns2:label>
+                    <ns2:router id="s1" refUri="processor_151">
+                        <ns2:route id="sc1" refUri="processor_151/output_153">
+                            <ns2:label id="l3" name="AppendCustomErrorMsg">
+                                <ns2:assignment id="a7" refUri="processor_158"/>
+                            </ns2:label>
+                        </ns2:route>
+                    </ns2:router>
+                    <ns2:router id="s2" refUri="processor_164">
+                        <ns2:route id="sc2" refUri="processor_164/output_166">
+                            <ns2:label id="l4" name="AssignTrackingVariables">
+                                <ns2:assignment id="a8" refUri="processor_175"/>
+                                <ns2:assignment id="a9" refUri="processor_183"/>
+                            </ns2:label>
+                        </ns2:route>
+                    </ns2:router>
+                    <ns2:transformer id="m1" refUri="processor_201"/>
+                    <ns2:invoke id="i1" refUri="application_189" name="Integration1"/>
+                    <ns2:ehStop id="eh0"/>
+                </ns2:catchAll>
+            </ns2:globalTry>
+        </ns2:orchestration>
+    </ns3:icsflow>
+</ns3:icsproject>

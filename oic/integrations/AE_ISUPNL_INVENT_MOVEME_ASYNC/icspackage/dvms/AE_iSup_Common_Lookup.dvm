@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dvm name="AE_iSup_Common_Lookup" xmlns="http://xmlns.oracle.com/dvm">
+    <description>Common Lookup for iSupervisor Integrations</description>
+    <columns>
+        <column name="Key"/>
+        <column name="Value"/>
+    </columns>
+    <rows>
+        <row>
+            <cell>success</cell>
+            <cell>success</cell>
+        </row>
+        <row>
+            <cell>error</cell>
+            <cell>error</cell>
+        </row>
+        <row>
+            <cell>serverName</cell>
+            <cell>argentoicdev3-lrqz6xlnztsi-ld.integration.ocp.oraclecloud.com/</cell>
+        </row>
+        <row>
+            <cell>lastUpdatedBy</cell>
+            <cell>INTEGRATION_USER.SVC_ADMIN</cell>
+        </row>
+        <row>
+            <cell>ClientIDNL</cell>
+            <cell>iSupNL</cell>
+        </row>
+        <row>
+            <cell>SourceSystemName</cell>
+            <cell>OPS</cell>
+        </row>
+        <row>
+            <cell>BatchPrefix</cell>
+            <cell>AE</cell>
+        </row>
+        <row>
+            <cell>ShipFromOrganizationCode</cell>
+            <cell>TSA</cell>
+        </row>
+        <row>
+            <cell>ReleaseStatus</cell>
+            <cell>Unreleased</cell>
+        </row>
+        <row>
+            <cell>OrderType</cell>
+            <cell>Transfer Order</cell>
+        </row>
+        <row>
+            <cell>ReleaseMode</cell>
+            <cell>ONLINE</cell>
+        </row>
+        <row>
+            <cell>ClientIDAOT</cell>
+            <cell>iSupAOT</cell>
+        </row>
+        <row>
+            <cell>ShipConfirmAction</cell>
+            <cell>CONFIRM</cell>
+        </row>
+        <row>
+            <cell>locationNL</cell>
+            <cell>NL</cell>
+        </row>
+        <row>
+            <cell>locationAOT</cell>
+            <cell>AOT</cell>
+        </row>
+        <row>
+            <cell>IntegrationFusionUser</cell>
+            <cell>INTEGRATION_USER.FUSION</cell>
+        </row>
+        <row>
+            <cell>OrderTypeSO</cell>
+            <cell>Sales Order</cell>
+        </row>
+        <row>
+            <cell>SalesOrderEFFCategory</cell>
+            <cell>DOO_FULFILL_LINES_ADD_INFO</cell>
+        </row>
+        <row>
+            <cell>SalesOrderEFFContextCode</cell>
+            <cell>iSupervisor Integration</cell>
+        </row>
+        <row>
+            <cell>ERPUser</cell>
+            <cell>INTEGRATION_USER.FUSION</cell>
+        </row>
+        <row>
+            <cell>OrganizationCode</cell>
+            <cell>BDA</cell>
+        </row>
+        <row>
+            <cell>WorkDefinitionCode</cell>
+            <cell>Feedstock Blending</cell>
+        </row>
+        <row>
+            <cell>StatusCode</cell>
+            <cell>ACTIVE</cell>
+        </row>
+    </rows>
+</dvm>

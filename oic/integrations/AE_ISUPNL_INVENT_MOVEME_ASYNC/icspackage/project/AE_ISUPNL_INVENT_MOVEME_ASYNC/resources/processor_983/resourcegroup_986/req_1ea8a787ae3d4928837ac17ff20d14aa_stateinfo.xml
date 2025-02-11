@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oracle-xsl-webmapper:StateInfo xmlns:oracle-xsl-webmapper="http://www.oracle.com/xsl/webmapper/state" version="1.1">
+    <oracle-xsl-webmapper:ErrorsCount>0</oracle-xsl-webmapper:ErrorsCount>
+    <oracle-xsl-webmapper:WarningsCount>0</oracle-xsl-webmapper:WarningsCount>
+    <oracle-xsl-webmapper:IsImported>false</oracle-xsl-webmapper:IsImported>
+    <oracle-xsl-webmapper:HasMappings>true</oracle-xsl-webmapper:HasMappings>
+    <oracle-xsl-webmapper:StateInfoIsStale>false</oracle-xsl-webmapper:StateInfoIsStale>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types">ns3:execute</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl</uriAbsoluteLocation>
+        <primary>true</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types">ns3:items</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/processor_3141/resourcegroup_3144/generated.wsdl</uriAbsoluteLocation>
+        <param>globalPickLineArray</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types">ns3:getAllResponse</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/application_928/inbound_929/resourcegroup_930/GetPickSlipDetails_REQUEST.wsdl</uriAbsoluteLocation>
+        <param>GetPickSlipDetails</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types">ns3:execute</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl</uriAbsoluteLocation>
+        <primary>true</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types">ns3:items</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/processor_3141/resourcegroup_3144/generated.wsdl</uriAbsoluteLocation>
+        <param>globalPickLineArray</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types">ns3:getAllResponse</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_b6e5ba42-4b26-4a9b-866c-70e564e6c9fb/resources/application_928/inbound_929/resourcegroup_930/GetPickSlipDetails_REQUEST.wsdl</uriAbsoluteLocation>
+        <param>GetPickSlipDetails</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+</oracle-xsl-webmapper:StateInfo>

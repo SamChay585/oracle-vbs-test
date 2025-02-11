@@ -1,0 +1,51 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST/types" name="GetATRDetail_REQUESTPortType" adapter="REST" wsdlLocation="GetATRDetail_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.init.version" value="24.10"/>
+      <property name="cloud.adapter.plugin.version" value="24.10"/>
+      <property name="cloud.adapter.sdk.init.version" value="23.3.5"/>
+      <property name="cloud.adapter.sdk.version" value="23.3.5"/>
+      <property name="connectionUrl" value="%%null_connectionUrl"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="abeae18e73b94fa6a34fea8956aa00f96b5f33341bd6d1c787cc9c6a8ad2ac4a"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="securityPolicy" value="BASIC_AUTH"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="GetATRDetail_REQUESTPortType" operation="execute">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="enforceResponseSizeRestriction" value="true"/>
+      <property name="oic.gen3.invoke" value="true"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="POST"/>
+      <property name="RequestElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail/types"/>
+      <property name="RequestElementName" value="request-wrapper"/>
+      <property name="RequestMediaType" value="application/json"/>
+      <property name="RequestSample" value="{ &quot;OrganizationCode&quot; : &quot;BDA&quot;, &quot;ItemNumber&quot; : &quot;FS00100&quot;, &quot;Subinventory&quot; : &quot;R1510&quot;, &quot;Lot&quot; : &quot;WOBDA-1007079&quot; }"/>
+      <property name="ResourceURI" value="/availableQuantityDetails"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail/types"/>
+      <property name="ResponseElementName" value="response-wrapper"/>
+      <property name="ResponseMediaType" value="application/json"/>
+      <property name="ResponseSample" value="{ &quot;OrganizationCode&quot; : &quot;BDA&quot;, &quot;OrganizationId&quot; : 300000016942718, &quot;ItemNumber&quot; : &quot;FS00100&quot;, &quot;InventoryItemId&quot; : 100000007608321, &quot;ItemRevision&quot; : null, &quot;Subinventory&quot; : &quot;R1510&quot;, &quot;LocatorId&quot; : null, &quot;Lot&quot; : &quot;WOBDA-1007079&quot;, &quot;OwningEntityId&quot; : null, &quot;PrimaryUnitOfMeasure&quot; : &quot;Tonne&quot;, &quot;QuantityOnhand&quot; : 10.507, &quot;AvailableToTransact&quot; : 7.729, &quot;SecondaryUnitOfMeasure&quot; : null, &quot;SecondaryQuantityOnhand&quot; : null, &quot;SecondaryAvailableToTransact&quot; : null, &quot;ReturnStatus&quot; : &quot;SUCCESS&quot;, &quot;ReturnMessageName&quot; : null, &quot;ReturnMessageText&quot; : null, &quot;InventoryProject&quot; : null, &quot;InventoryProjectId&quot; : null, &quot;InventoryTask&quot; : null, &quot;InventoryTaskId&quot; : null, &quot;InventoryCountryOfOrigin&quot; : null, &quot;InventoryCountryOfOriginCode&quot; : null, &quot;Locator&quot; : null, &quot;OwningPartySite&quot; : null, &quot;ReceivingTransactionId&quot; : null, &quot;TreeMode&quot; : null, &quot;AvailableToReserve&quot; : 7.729, &quot;SecondaryAvailableToReserve&quot; : null, &quot;links&quot; : [ { &quot;rel&quot; : &quot;self&quot;, &quot;href&quot; : &quot;https://ekce-dev3.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/availableQuantityDetails/99999&quot;, &quot;name&quot; : &quot;availableQuantityDetails&quot;, &quot;kind&quot; : &quot;item&quot; }, { &quot;rel&quot; : &quot;canonical&quot;, &quot;href&quot; : &quot;https://ekce-dev3.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/availableQuantityDetails/99999&quot;, &quot;name&quot; : &quot;availableQuantityDetails&quot;, &quot;kind&quot; : &quot;item&quot; } ] }"/>
+      <property name="abstractComplexType" value="true"/>
+      <property name="allowChangeDefaultNamespace" value="false"/>
+      <property name="copyDescendantTypes" value="true"/>
+      <property name="copyDescendantTypesFullTraverse" value="true"/>
+      <property name="copyFaultFromModel" value="true"/>
+      <property name="generateConnectivityPropertiesOutboundRequest" value="RESTOUTREQ"/>
+      <property name="generateConnectivityPropertiesOutboundResponse" value="RESTOUTRES"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/GetATRDetail_REQUEST"/>
+      <property name="invocationStyle" value="REQUEST_RESPONSE"/>
+      <property name="isRequestJsonSchema" value="false"/>
+      <property name="isRequestRawBytes" value="false"/>
+      <property name="isResponseJsonSchema" value="false"/>
+      <property name="isResponseRawBytes" value="false"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="requestJsonTopLevelArray" value="false"/>
+      <property name="responseJsonTopLevelArray" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

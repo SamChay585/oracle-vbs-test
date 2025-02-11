@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oracle-xsl-webmapper:StateInfo xmlns:oracle-xsl-webmapper="http://www.oracle.com/xsl/webmapper/state" version="1.1">
+    <oracle-xsl-webmapper:ErrorsCount>0</oracle-xsl-webmapper:ErrorsCount>
+    <oracle-xsl-webmapper:WarningsCount>0</oracle-xsl-webmapper:WarningsCount>
+    <oracle-xsl-webmapper:IsImported>false</oracle-xsl-webmapper:IsImported>
+    <oracle-xsl-webmapper:HasMappings>true</oracle-xsl-webmapper:HasMappings>
+    <oracle-xsl-webmapper:StateInfoIsStale>false</oracle-xsl-webmapper:StateInfoIsStale>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <param>ESSJobPackageName</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <param>ESSJobDefinitionName</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <param>globalOrgID</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <param>globalMRNumber</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types">ns3:execute</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl</uriAbsoluteLocation>
+        <primary>true</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST/types">ns3:getAllResponse</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/application_3456/inbound_3457/resourcegroup_3458/GetPickSlipDetail_REQUEST.wsdl</uriAbsoluteLocation>
+        <param>GetPickSlipDetail</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetail_REQUEST/types">ns3:getAll</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/application_3456/inbound_3457/resourcegroup_3458/GetPickSlipDetail_REQUEST.wsdl</uriAbsoluteLocation>
+        <param>GetPickSlipDetail_REQUEST</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapters/fscmRestApp/PickSlipDetails">ns3:itemLots</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_2084/resourcegroup_2087/generated.wsdl</uriAbsoluteLocation>
+        <param>globalLotItem</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapters/fscmRestApp">ns3:pickLines</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_2326/resourcegroup_2329/generated.wsdl</uriAbsoluteLocation>
+        <param>globalLotItemArray</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapters/fscmRestApp">ns3:pickLines</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_3132/resourcegroup_3135/generated.wsdl</uriAbsoluteLocation>
+        <param>globalPickLine</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/erp/GetPickSlipDetails_REQUEST/types">ns3:items</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_3141/resourcegroup_3144/generated.wsdl</uriAbsoluteLocation>
+        <param>globalPickLineArray</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://www.oracle.com/2014/03/ic/integration/metadata">ns3:metadata</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_1/resourcegroup_2/ICSIntegrationMetadata.xsd</uriAbsoluteLocation>
+        <param>self</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>ESSJobDefinitionName</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>ESSJobPackageName</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalMRNumber</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalOrgID</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalClientID</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalJobStatus</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalLotQty</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalRemainQty</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>globalTransferedQty</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>tracking_var_1</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>tracking_var_2</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <param>tracking_var_3</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+</oracle-xsl-webmapper:StateInfo>

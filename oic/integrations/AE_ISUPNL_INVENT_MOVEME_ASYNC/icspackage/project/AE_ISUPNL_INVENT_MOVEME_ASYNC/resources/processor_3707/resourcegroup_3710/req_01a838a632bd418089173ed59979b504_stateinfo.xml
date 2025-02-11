@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<oracle-xsl-webmapper:StateInfo xmlns:oracle-xsl-webmapper="http://www.oracle.com/xsl/webmapper/state" version="1.1">
+    <oracle-xsl-webmapper:ErrorsCount>0</oracle-xsl-webmapper:ErrorsCount>
+    <oracle-xsl-webmapper:WarningsCount>0</oracle-xsl-webmapper:WarningsCount>
+    <oracle-xsl-webmapper:IsImported>false</oracle-xsl-webmapper:IsImported>
+    <oracle-xsl-webmapper:HasMappings>true</oracle-xsl-webmapper:HasMappings>
+    <oracle-xsl-webmapper:StateInfoIsStale>false</oracle-xsl-webmapper:StateInfoIsStale>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types">ns3:execute</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl</uriAbsoluteLocation>
+        <primary>true</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapters/fscmRestApp">ns3:lines</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_3036/resourcegroup_4019/generated.wsdl</uriAbsoluteLocation>
+        <param>currentProduct</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:SourcesReferenced>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/nxsd/surrogate/ReadLotsToStage">ns3:G_1</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_1161/resourcegroup_1173/generated.wsdl</uriAbsoluteLocation>
+        <param>currentLot</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:SourcesReferenced>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types">ns3:execute</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/application_13/outbound_14/resourcegroup_15/InvokeInventoryMovement_REQUEST.wsdl</uriAbsoluteLocation>
+        <primary>true</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapter/nxsd/surrogate/ReadLotsToStage">ns3:G_1</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_1161/resourcegroup_1173/generated.wsdl</uriAbsoluteLocation>
+        <param>currentLot</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+    <oracle-xsl-webmapper:AllSources>
+        <element xmlns:ns3="http://xmlns.oracle.com/cloud/adapters/fscmRestApp">ns3:lines</element>
+        <uriAbsoluteLocation>file:/tmp/WC/itg_2c8f8b00-9d20-4b32-9b3e-ded4fd0c6f33/resources/processor_3036/resourcegroup_4019/generated.wsdl</uriAbsoluteLocation>
+        <param>currentProduct</param>
+        <primary>false</primary>
+    </oracle-xsl-webmapper:AllSources>
+</oracle-xsl-webmapper:StateInfo>

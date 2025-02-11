@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dvm name="AE_Common_Error_Messages_Lookup" xmlns="http://xmlns.oracle.com/dvm">
+    <columns>
+        <column name="Code"/>
+        <column name="ErrorType"/>
+        <column name="ErrorDescription"/>
+        <column name="EmailGroup"/>
+        <column name="HttpCode"/>
+        <column name="RetryCount"/>
+        <column name="RetryServiceName"/>
+        <column name="EmailFlagPreRetry"/>
+        <column name="EmailFlagPostRetry"/>
+        <column name="EmailSubject"/>
+        <column name="SchedulerID"/>
+        <column name="TemplateID"/>
+    </columns>
+    <rows>
+        <row>
+            <cell>DataIntgr:requestFileError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error reading the requestID file. Before you run the extract again, make sure to delete the respective lock.json and request.json files manually from OIC FTP.</cell>
+            <cell>Default:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>DataIntgr:invalidClientID</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Provide a valid client ID.</cell>
+            <cell>Default:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>DataIntgr:callBackAPINotFoundError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Callback API is not found.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:fileTransformationError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>File transformation failed.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:noFilesFoundError</cell>
+            <cell>ERROR_NO_RECORDS_FOUND</cell>
+            <cell>No records found.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:anotherRequestIsInprogress</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Another request is in progress for the requested report.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:requiredFieldsNull</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing required fields.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:reportCategoryNotValid</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>reportCategory is not valid.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:badRequest</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Bad Request</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:missingFields</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing required fields.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:readFileFromFTPFailure</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Ensure valid reportName and bactchNo are provided.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:reportCategoryError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Requested report category is not found.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:missingFilterParams</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing filter parameter(s):</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:unhandledError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Unhandled Error.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:ESSJobFailure</cell>
+            <cell>ERROR_DATA_EXTRACT_FAILED</cell>
+            <cell>Data extraction failed  or no records found.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:requestFilterParamsValueNull</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more filter parameter values are missing.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:callBackAPIError</cell>
+            <cell>ERROR_CALLBACK_API</cell>
+            <cell>Error while invoking callback API.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:errorUnhandledRetry</cell>
+            <cell>ERROR_UNHANDLED_RETRY</cell>
+            <cell>Error while retrying the failed instances.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Retry Failure</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:releaseLockError</cell>
+            <cell>ERROR_RELEASE_LOCK</cell>
+            <cell>Error deleting the lock file or requestID file.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:ESSJobInvocationFailure</cell>
+            <cell>ERROR_ESS_JOB_FAILURE</cell>
+            <cell>Error while invoking ESS JOB.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:InvokeAppianCallbackAPIError</cell>
+            <cell>ERROR_CALLBACK_API</cell>
+            <cell>Error while invoking callback API.</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Appian:invalidDateFilterParams</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Invalid date filter parameter(s):</cell>
+            <cell>Appian:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent Appian - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:fileTransformationError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>File transformation failed.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:noFilesFoundError</cell>
+            <cell>ERROR_NO_RECORDS_FOUND</cell>
+            <cell>No records found.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:anotherRequestIsInprogress</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Another request is in progress for the requested report.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:requiredFieldsNull</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing required fields.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:reportCategoryNotValid</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>reportCategory is not valid.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:badRequest</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Bad Request</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:missingFields</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing required fields.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:readFileFromFTPFailure</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Ensure valid reportName and bactchNo are provided.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:reportCategoryError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Requested report category is not found.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:missingFilterParams</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing filter parameter(s):</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:unhandledError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Unhandled Error - Check the logs for more details.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:ESSJobFailure</cell>
+            <cell>ERROR_DATA_EXTRACT_FAILED</cell>
+            <cell>Data extraction failed  or no records found.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:requestFilterParamsValueNull</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more filter parameter values are missing.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:callBackAPIError</cell>
+            <cell>ERROR_CALLBACK_API</cell>
+            <cell>Error while invoking callback API.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:errorUnhandledRetry</cell>
+            <cell>ERROR_UNHANDLED_RETRY</cell>
+            <cell>Error while retrying the failed instances.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Retry Failure</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:releaseLockError</cell>
+            <cell>ERROR_RELEASE_LOCK</cell>
+            <cell>Error deleting the lock file or requestID file.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:ESSJobInvocationFailure</cell>
+            <cell>ERROR_ESS_JOB_FAILURE</cell>
+            <cell>Error while invoking ESS JOB.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:InvokeAppianCallbackAPIError</cell>
+            <cell>ERROR_CALLBACK_API</cell>
+            <cell>Error while invoking callback API.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidDateFilterParams</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Invalid date filter parameter(s):</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:unhandledDataPushError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Unhandled Error.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:productDataPushError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Product Upload Error.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:unhandledProductDataPushError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Unhandled Error.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Default:invalidLocationID</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Missing or invalid Location.</cell>
+            <cell>Default:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:getTOInvocationFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while fetching transfer order details.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>N</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidTankDetails</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Tank requested by iSupervisor does not exist in Oracle ERP.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidProductCode</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Invalid product code provided in one of the lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidLineStatus</cell>
+            <cell>ERROR_INVALID_LINE_STATUS</cell>
+            <cell>Invalid status for one or more line(s), request cannot be processed.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:insufficientOnHandBalanceError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>The source sub inventory does not have enough quantity.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>12</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_iSup_Insufficient_Inv_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:pickSlipNotFoundError</cell>
+            <cell>ERROR_PICK_SLIP_NOT_FOUND</cell>
+            <cell>Pick Slip not found for the requested order.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>N</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:transferOrderLinesMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more transfer order line(s) received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidPOLineStatusForReceiving</cell>
+            <cell>ERROR_INVALID_PO_LINE_STATUS</cell>
+            <cell>Invalid status for one or more line(s). All lines must be in open status for receiving.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:purchaseOrderLinesMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more purchase order line(s) received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:noMatchingOrderFound</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>No order found in the system, or the order is not in a processable state.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:poReceiveError</cell>
+            <cell>ERROR_PO_RECEIVE_ERROR</cell>
+            <cell>Failed to receive one or more PO line(s). You can manually process the pending lines through the ERP UI, or reverse the partial receipt and resubmit the receipt request. Refer to the Oracle documentation for guidance on reversing a partial receipt.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:partialPOReceiptNotAllowed</cell>
+            <cell>ERROR_PO_RECEIVE_ERROR</cell>
+            <cell>PO receiving cannot be processed as one or more line(s) are partially received already.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>Default:unhandledError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Unhandled Error - Check the logs for more details.</cell>
+            <cell>Default:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent  - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:pickWaveCreationFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while creating pick wave.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>N</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:confirmPickSlipFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while confirming pick slip. Please complete the confirmation steps manually from Confirm Pickslip screen in Inventory Management to finalize the shipment for this order.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:updateShipmentFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while updating shipment.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:confirmShipmentFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while confirming shipment. Please manually complete the process from the Manage Shipments screen to finalize the order.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:receiptCreationFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Receipt creation for the Transfer order failed. Please manually receive the order in the destination inventory organization from Inventory Management to complete the process.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSup:AutoOrderApprovalFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while auto approving the order(s) based on iSupervisor status.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:CRPError</cell>
+            <cell>ERROR_CREDIT_REVIEW_PENDING</cell>
+            <cell>The sales order closure process was terminated as the order below is on hold with credit review pending. Also, note that this sales order closure request will be retried at a later time, so please release the hold after checking the customer's credit limit information.</cell>
+            <cell>iSupNL:EmailGroupCRPError</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification : ACTION REQUIRED</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:salesOrderLinesMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more sales order line(s) received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:toleranceError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Requested quantity is not within the tolerance range.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:multipleActiveSalesOrder</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Multiple open sales order revisions found. Please review and resolve the revisions manually before the retry attempts lapse.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>Y</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:inventoryReservationFailure</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while creating inventory reservation.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>N</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:loadedDateError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>The loaded date in the header must be greater than the loaded date in lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidStockholder</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Stockholder number is not valid, verify the stockholder number in XXARGENT_ISUP_STOCKHOLDER ERP Lookup.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderMaterialIssueError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while issuing material for work order, please review and complete the work order manually.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderProductCompletionError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while product completion.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>N</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderCompletionError</cell>
+            <cell>ERROR_UNHANDLED</cell>
+            <cell>Error while completing the final step of the work order.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>500</cell>
+            <cell>3</cell>
+            <cell>ic/api/integration/v1/flows/rest/AE_COMMON_DEFAULT_RETRY_SVC_ASYN/1.0/invokeDefaultRetrySvc</cell>
+            <cell>N</cell>
+            <cell>Y</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>AE_Common_1Hour_Error_Retry_Scheduler</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderLinesMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>The count of work order line(s) received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderMaterialMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>One or more work order line(s) received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderNotFoundError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Work Order received from iSupervisor does not exist in Oracle ERP.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:invalidWOStatusToCompleteOrder</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Work Order cannot be completed as the order is not in RELEASED state.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:multipleWorkOrderOutputsError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Work order operations that have one or more outputs cannot be transacted.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+        <row>
+            <cell>iSupNL:workOrderOutputMismatchError</cell>
+            <cell>ERROR_BAD_REQUEST</cell>
+            <cell>Work order output received from iSupervisor do not match with ERP order lines.</cell>
+            <cell>iSupNL:EmailGroupDefault</cell>
+            <cell>400</cell>
+            <cell>0</cell>
+            <cell>NONE</cell>
+            <cell>Y</cell>
+            <cell>N</cell>
+            <cell>Argent iSupervisor NL - OIC Error Notification</cell>
+            <cell>NONE</cell>
+            <cell>DEFAULT:ERROR_NOTIFY_TEMPLATE</cell>
+        </row>
+    </rows>
+</dvm>

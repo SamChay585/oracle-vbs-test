@@ -1,0 +1,35 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/soap/GetLots_REQUEST/types" name="ExternalReportWSSService" adapter="soap" wsdlLocation="GetLots_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.soap.SoapConnectionFactory">
+      <property name="applicationVersion" value="1_0"/>
+      <property name="cloud.adapter.plugin.version" value="24.10.1"/>
+      <property name="cloud.adapter.sdk.version" value="24.10.1"/>
+      <property name="csfMap" value="oracle.wsm.security"/>
+      <property name="csfkey" value="1cba651e0d87acdec3f19ce73ca09eacd1d2597a0471171d679a8a47962e5d01"/>
+      <property name="endpointURL" value="https://ekce-dev3.fa.em2.oraclecloud.com:443/xmlpserver/services/ExternalReportWSSService"/>
+      <property name="managedSecurity" value="true"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="security" value="oracle/wss_http_token_over_ssl_client_policy"/>
+      <property name="targetWSDLURL" value="%%null_targetWSDLURL"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="ExternalReportWSSService" operation="runReport">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="runReport"/>
+      <property name="operationPath" value=""/>
+      <property name="dynamicInvokeEnabled" value="true"/>
+      <property name="enableMTOMProcessing" value="false"/>
+      <property name="endpointWSDLURL" value="GetLots_REQUEST.wsdl"/>
+      <property name="enforceResponseSizeRestriction" value="true"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="inboundAsyncEnabled" value="false"/>
+      <property name="interactionSpecClass" value="oracle.tip.adapter.cloud.CloudInteractionSpec"/>
+      <property name="jcaTransportEnabled" value="true"/>
+      <property name="oic.gen3.invoke" value="true"/>
+      <property name="skipAttachmentProcessing" value="true"/>
+      <property name="targetInvocationStyle" value="REQUEST_RESPONSE"/>
+      <property name="targetPort" value="ExternalReportWSSService"/>
+      <property name="targetService" value="ExternalReportWSSService"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

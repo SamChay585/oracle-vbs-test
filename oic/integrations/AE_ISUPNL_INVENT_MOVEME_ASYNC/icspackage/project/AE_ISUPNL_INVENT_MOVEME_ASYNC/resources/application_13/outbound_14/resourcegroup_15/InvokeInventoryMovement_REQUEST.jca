@@ -1,0 +1,43 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types" name="InvokeInventoryMovement_REQUESTPortType" adapter="REST" wsdlLocation="InvokeInventoryMovement_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.rest.RestAdapterConnectionFactory">
+      <property name="cloud.adapter.plugin.version" value="24.10"/>
+      <property name="cloud.adapter.sdk.version" value="23.3.5"/>
+      <property name="connectionUrl" value="%%AE_ISUPNL_OIC_REST_CONN_connectionUrl"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="e3f5ad80a544aaf3fd081491b9dbc334fe232aef94f1e79220fb7b5d0a02ec38"/>
+      <property name="oauth.access.token.uri" value="%%AE_ISUPNL_OIC_REST_CONN_oauth.access.token.uri"/>
+      <property name="oauth.scope" value="%%AE_ISUPNL_OIC_REST_CONN_oauth.scope"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="securityPolicy" value="OAUTH_CLIENT_CREDENTIALS"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-activation portType="InvokeInventoryMovement_REQUESTPortType" operation="execute">
+    <activation-spec className="oracle.tip.adapter.cloud.CloudActivationSpec">
+      <property name="targetOperation" value="execute"/>
+      <property name="HTTPHeadersAdded" value="true"/>
+      <property name="HttpVerb" value="POST"/>
+      <property name="RequestElementNS" value="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement/types"/>
+      <property name="RequestElementName" value="request-wrapper"/>
+      <property name="RequestMediaType" value="application/json"/>
+      <property name="RequestSample" value="{   &quot;issueNumber&quot;: &quot;TEST-1234-24&quot;,   &quot;sourceStockholder&quot;: &quot;BDA&quot;,   &quot;requiredDate&quot;: &quot;2024-10-09T11:22:01+00:00&quot;,   &quot;location&quot;: &quot;NL&quot;,   &quot;lineDetails&quot;: [     {       &quot;productCode&quot;: &quot;FS00100&quot;,       &quot;sourceTank&quot;: &quot;R1023&quot;,       &quot;destinationTank&quot;: &quot;R1508&quot;,       &quot;loadedDate&quot;: &quot;2024-09-26T11:22:01+00:00&quot;,       &quot;productNatural&quot;: &quot;444&quot;,       &quot;productStandard&quot;: &quot;2347&quot;,       &quot;productWeight&quot;: &quot;2345&quot;     }   ] } "/>
+      <property name="ResourceURI" value="/inventoryMovement"/>
+      <property name="activationSpecClass" value="oracle.tip.adapter.cloud.CloudActivationSpec"/>
+      <property name="allowChangeDefaultNamespace" value="false"/>
+      <property name="copyFaultFromModel" value="true"/>
+      <property name="forceWsdlTypesBuild" value="true"/>
+      <property name="generateConnectivityPropertiesInboundRequest" value="RESTINREQ"/>
+      <property name="generateConnectivityPropertiesInboundResponse" value="RESTINRES"/>
+      <property name="generateInboundCredentials" value="true"/>
+      <property name="generatePartnerLink" value="false"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/REST/InvokeInventoryMovement_REQUEST"/>
+      <property name="invocationStyle" value="NOTIFICATION"/>
+      <property name="isRequestJsonSchema" value="false"/>
+      <property name="isRequestRawBytes" value="false"/>
+      <property name="operations" value="default"/>
+      <property name="postQueryParamsAsContent" value="false"/>
+      <property name="requestJsonTopLevelArray" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+</adapter-config>

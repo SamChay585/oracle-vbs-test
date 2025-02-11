@@ -1,0 +1,58 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types" name="CreateMovementRequest_REQUESTPortType" adapter="erp" wsdlLocation="CreateMovementRequest_REQUEST.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.fa.FAConnectionFactory">
+      <property name="Host" value="%%AE_ISUPNL_ERP_CLOUD_CONN_Host"/>
+      <property name="applicationVersion" value="1.0"/>
+      <property name="cloud.adapter.plugin.version" value="23.04.1"/>
+      <property name="cloud.adapter.sdk.version" value="23.04.1"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="ad17c42fe7a2b27c0151329647ddc8a741536c8e76b02beeb26ab91c2c5ba6ef"/>
+      <property name="endpointType" value="REST"/>
+      <property name="eventCatalogURL" value="%%AE_ISUPNL_ERP_CLOUD_CONN_eventCatalogURL"/>
+      <property name="interfaceCatalogURL" value="%%AE_ISUPNL_ERP_CLOUD_CONN_interfaceCatalogURL"/>
+      <property name="lastSaved" value="2024.11.05.10.36.59"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="restResourceURIs" value=""/>
+      <property name="securityPolicy" value="USERNAME_PASSWORD"/>
+      <property name="serviceEndpoints" value="%%AE_ISUPNL_ERP_CLOUD_CONN_serviceEndpoints"/>
+      <property name="targetWSDLURL" value="%%AE_ISUPNL_ERP_CLOUD_CONN_targetWSDLURL"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="CreateMovementRequest_REQUESTPortType" operation="create">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="create"/>
+      <property name="Attachment" value="false"/>
+      <property name="RequestElementNS" value="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+      <property name="RequestElementName" value="InventoryMovementRequests"/>
+      <property name="ResponseElementNS" value="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+      <property name="ResponseElementName" value="InventoryMovementRequests"/>
+      <property name="RestApplication" value="{http://xmlns.oracle.com/cloud/adapters}fscmRestApp"/>
+      <property name="abstractComplexType" value="true"/>
+      <property name="browseBySelection" value="browseByServiceRest"/>
+      <property name="cherryPickChildResources" value="true"/>
+      <property name="collectionResource" value="true"/>
+      <property name="copyDescendantTypes" value="true"/>
+      <property name="copyDescendantTypesFullTraverse" value="true"/>
+      <property name="dffTypes" value="projectDFF=http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/lines/projectDFF"/>
+      <property name="enableHCMAPIBlacklisting" value="true"/>
+      <property name="enforceResponseSizeRestriction" value="true"/>
+      <property name="generateConnectivityPropertiesOutboundRequest" value="RESTOUTREQ"/>
+      <property name="httpVerb" value="POST"/>
+      <property name="importDescendantSchema" value="true"/>
+      <property name="includeDescedants" value="{http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/lines/projectDFF}INV_Misc_Transactions"/>
+      <property name="integrationSchemaNamespace" value="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST/types"/>
+      <property name="integrationWSDLNamespace" value="http://xmlns.oracle.com/cloud/adapter/erp/CreateMovementRequest_REQUEST"/>
+      <property name="interactionSpecClass" value="oracle.tip.adapter.cloud.CloudInteractionSpec"/>
+      <property name="oic.gen3.invoke" value="true"/>
+      <property name="operationDisplayName" value="create"/>
+      <property name="outboundRequestObject" value="{http://xmlns.oracle.com/cloud/adapters/fscmRestApp}InventoryMovementRequests"/>
+      <property name="outboundRequestOperation" value="{http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/Collection}create"/>
+      <property name="referenceSourceSchemas" value="false"/>
+      <property name="resourceURI" value="https://ekce-dev3.fa.em2.oraclecloud.com:443/fscmRestApi/resources/11.13.18.05/inventoryMovementRequests"/>
+      <property name="selectedAction" value="CRUD"/>
+      <property name="selectedChildResources" value="lines,DFF"/>
+      <property name="selectedContexts" value="{http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/lines}projectDFF=[{http://xmlns.oracle.com/cloud/adapters/fscmRestApp/InventoryMovementRequests/lines/projectDFF}INV_Misc_Transactions];"/>
+      <property name="skipChildGenerationOnCycle" value="true"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>

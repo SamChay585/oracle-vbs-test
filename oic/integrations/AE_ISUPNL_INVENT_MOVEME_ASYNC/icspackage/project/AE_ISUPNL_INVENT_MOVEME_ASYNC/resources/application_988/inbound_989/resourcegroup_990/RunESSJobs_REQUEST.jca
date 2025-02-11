@@ -1,0 +1,42 @@
+<adapter-config xsdTargetNamespace="http://xmlns.oracle.com/cloud/adapter/erp/RunESSJobs_REQUEST/types" name="RunESSJobs_REQUESTPortType" adapter="erp" wsdlLocation="RunESSJobs_REQUEST.wsdl" rtWsdlLocation="RunESSJobs_REQUEST_RT.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  <connection-factory location="cloud/CloudAdapter">
+    <non-managed-connection managedConnectionFactoryClassName="oracle.cloud.connector.fa.FAConnectionFactory">
+      <property name="Host" value="%%null_Host"/>
+      <property name="applicationVersion" value="1.0"/>
+      <property name="cloud.adapter.plugin.version" value="23.04.1"/>
+      <property name="cloud.adapter.sdk.version" value="23.04.1"/>
+      <property name="csfMap" value="oracle.cloud.adapter"/>
+      <property name="csfkey" value="ad17c42fe7a2b27c0151329647ddc8a741536c8e76b02beeb26ab91c2c5ba6ef"/>
+      <property name="endpointType" value="SOAP"/>
+      <property name="eventCatalogURL" value="%%null_eventCatalogURL"/>
+      <property name="interfaceCatalogURL" value="%%null_interfaceCatalogURL"/>
+      <property name="lastSaved" value="2024.11.05.10.36.59"/>
+      <property name="privateEndpoint" value="false"/>
+      <property name="restResourceURIs" value=""/>
+      <property name="securityPolicy" value="USERNAME_PASSWORD"/>
+      <property name="serviceEndpoints" value="%%null_serviceEndpoints"/>
+      <property name="serviceWSDLURL" value="%%null_serviceWSDLURL"/>
+      <property name="targetWSDLURL" value="%%null_targetWSDLURL"/>
+    </non-managed-connection>
+  </connection-factory>
+  <endpoint-interaction portType="RunESSJobs_REQUESTPortType" operation="submitESSJobRequest">
+    <interaction-spec className="oracle.tip.adapter.cloud.CloudInteractionSpec">
+      <property name="targetOperation" value="submitESSJobRequest"/>
+      <property name="operationPath" value="http://xmlns.oracle.com/apps/financials/commonModules/shared/model/erpIntegrationService/submitESSJobRequest"/>
+      <property name="enforceResponseSizeRestriction" value="true"/>
+      <property name="oic.gen3.invoke" value="true"/>
+      <property name="Attachment" value="false"/>
+      <property name="browseBySelection" value="browseByService"/>
+      <property name="cherryPickChildResources" value="true"/>
+      <property name="copyDescendantTypes" value="true"/>
+      <property name="copyDescendantTypesFullTraverse" value="true"/>
+      <property name="enableHCMAPIBlacklisting" value="true"/>
+      <property name="faServiceQualifiedName" value="{http://xmlns.oracle.com/apps/financials/commonModules/shared/model/erpIntegrationService/}ErpIntegrationService"/>
+      <property name="generateConnectivityPropertiesOutboundRequest" value="RESTOUTREQ"/>
+      <property name="outboundRequestObject" value="{http://xmlns.oracle.com/apps/financials/commonModules/shared/model/erpIntegrationService/OSCAdapter}ErpIntegrationService"/>
+      <property name="outboundRequestOperation" value="{http://xmlns.oracle.com/apps/financials/commonModules/shared/model/erpIntegrationService/}submitESSJobRequest"/>
+      <property name="referenceSourceSchemas" value="true"/>
+      <property name="selectedAction" value="CRUD"/>
+    </interaction-spec>
+  </endpoint-interaction>
+</adapter-config>
