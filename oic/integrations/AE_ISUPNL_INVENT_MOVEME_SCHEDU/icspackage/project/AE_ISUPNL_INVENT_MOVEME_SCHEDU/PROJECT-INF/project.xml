@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns3:icsproject name="project_1" version="10.1" cversion="100" modelType="freeform" xmlns="http://www.oracle.com/2014/03/ics/flow/definition" xmlns:ns2="http://www.oracle.com/2014/03/ics/project/definition" xmlns:ns3="http://www.oracle.com/2014/03/ics/project">
+    <ns2:projectCode>AE_ISUPNL_INVENT_MOVEME_SCHEDU</ns2:projectCode>
+    <ns2:projectVersion>01.00.0000</ns2:projectVersion>
+    <ns2:projectName>AE_iSupNL_Inventory_Movement_Scheduler</ns2:projectName>
+    <ns2:percentComplete>100</ns2:percentComplete>
+    <ns2:projectHasErrors>false</ns2:projectHasErrors>
+    <ns2:projectHasWarnings>false</ns2:projectHasWarnings>
+    <ns3:icsflow name="flow_1">
+        <application name="application_93">
+            <role>target</role>
+            <adapter>
+                <type>app-adapter</type>
+                <code>PRESEEDED_COLLOCATED_CONN_1741</code>
+                <name>InvokeInventoryMovementListNotification</name>
+                <property name="hasAttachment" value="false"/>
+            </adapter>
+            <mep>push-sync</mep>
+            <inbound name="inbound_94">
+                <operation>POST</operation>
+                <resourceGroup name="resourcegroup_95">
+                    <resource name="resource_96" location="../resources/application_93/inbound_94/resourcegroup_95/InvokeInventoryMovementListNotification_REQUEST.jca" type="jca"/>
+                    <resource name="resource_97" location="../resources/application_93/inbound_94/resourcegroup_95/ICSFault.xsd" type="xsd"/>
+                    <resource name="resource_98" location="../resources/application_93/inbound_94/resourcegroup_95/InvokeInventoryMovementListNotification_REQUEST.wsdl" type="wsdl"/>
+                </resourceGroup>
+                <input name="input_100">
+                    <role>request</role>
+                    <messageContextRef refUri="messagecontext_99"/>
+                </input>
+                <output name="output_102">
+                    <role>response</role>
+                    <messageContextRef refUri="messagecontext_101"/>
+                </output>
+                <output name="output_104">
+                    <role>fault</role>
+                    <subRole>APIInvocationError</subRole>
+                    <messageContextRef refUri="messagecontext_103"/>
+                </output>
+            </inbound>
+        </application>
+        <application name="application_110">
+            <role>target</role>
+            <adapter>
+                <type>app-adapter</type>
+                <code>AE_ISUPNL_BIP_SOAP_CONN</code>
+                <name>GetInventoryMovementDetails</name>
+                <property name="hasAttachment" value="false"/>
+            </adapter>
+            <mep>push-sync</mep>
+            <inbound name="inbound_111">
+                <operation>runReport</operation>
+                <resourceGroup name="resourcegroup_112">
+                    <resource name="resource_113" location="../resources/application_110/inbound_111/resourcegroup_112/GetInventoryMovementDetails_REQUEST.jca" type="jca"/>
+                    <resource name="resource_114" location="../resources/application_110/inbound_111/resourcegroup_112/ICSFault.xsd" type="xsd"/>
+                    <resource name="resource_115" location="../resources/application_110/inbound_111/resourcegroup_112/GetInventoryMovementDetails_REQUEST.wsdl" type="wsdl"/>
+                </resourceGroup>
+                <input name="input_117">
+                    <role>request</role>
+                    <messageContextRef refUri="messagecontext_116"/>
+                </input>
+                <output name="output_119">
+                    <role>response</role>
+                    <messageContextRef refUri="messagecontext_118"/>
+                </output>
+                <output name="output_121">
+                    <role>fault</role>
+                    <subRole>AccessDeniedException</subRole>
+                    <messageContextRef refUri="messagecontext_120"/>
+                </output>
+                <output name="output_123">
+                    <role>fault</role>
+                    <subRole>OperationFailedException</subRole>
+                    <messageContextRef refUri="messagecontext_122"/>
+                </output>
+                <output name="output_125">
+                    <role>fault</role>
+                    <subRole>InvalidParametersException</subRole>
+                    <messageContextRef refUri="messagecontext_124"/>
+                </output>
+            </inbound>
+        </application>
+        <application name="application_568">
+            <role>target</role>
+            <adapter>
+                <type>app-adapter</type>
+                <code>PRESEEDED_COLLOCATED_CONN_1741</code>
+                <name>InvokeCommonErrorEmailNotification</name>
+                <property name="hasAttachment" value="false"/>
+            </adapter>
+            <mep>push-sync</mep>
+            <inbound name="inbound_569">
+                <operation>POST</operation>
+                <resourceGroup name="resourcegroup_570">
+                    <resource name="resource_571" location="../resources/application_568/inbound_569/resourcegroup_570/InvokeCommonErrorEmailNotification_REQUEST.jca" type="jca"/>
+                    <resource name="resource_572" location="../resources/application_568/inbound_569/resourcegroup_570/ICSFault.xsd" type="xsd"/>
+                    <resource name="resource_573" location="../resources/application_568/inbound_569/resourcegroup_570/InvokeCommonErrorEmailNotification_REQUEST.wsdl" type="wsdl"/>
+                </resourceGroup>
+                <input name="input_575">
+                    <role>request</role>
+                    <messageContextRef refUri="messagecontext_574"/>
+                </input>
+                <output name="output_577">
+                    <role>response</role>
+                    <messageContextRef refUri="messagecontext_576"/>
+                </output>
+                <output name="output_579">
+                    <role>fault</role>
+                    <subRole>APIInvocationError</subRole>
+                    <messageContextRef refUri="messagecontext_578"/>
+                </output>
+            </inbound>
+        </application>
+        <processor name="processor_1">
+            <type>messageTracker</type>
+            <role>messageTracker:global</role>
+            <trackingVariableGroup>
+                <trackingVariable>
+                    <role>tracking_var_1</role>
+                    <primary>true</primary>
+                    <name>startTime</name>
+                    <xpath>/schedule/startTime</xpath>
+                    <messageContextRef refUri="messagecontext_11"/>
+                    <output name="output_3">
+                        <messageContextRef refUri="messagecontext_2"/>
+                    </output>
+                </trackingVariable>
+                <trackingVariable>
+                    <role>tracking_var_2</role>
+                    <primary>false</primary>
+                    <name>tracking_var_2</name>
+                    <messageContextRef refUri="messagecontext_11"/>
+                    <output name="output_5">
+                        <messageContextRef refUri="messagecontext_4"/>
+                    </output>
+                </trackingVariable>
+                <trackingVariable>
+                    <role>tracking_var_3</role>
+                    <primary>false</primary>
+                    <name>tracking_var_3</name>
+                    <messageContextRef refUri="messagecontext_11"/>
+                    <output name="output_7">
+                        <messageContextRef refUri="messagecontext_6"/>
+                    </output>
+                </trackingVariable>
+            </trackingVariableGroup>
+        </processor>
+        <processor name="processor_8">
+            <type>scheduleReceive</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_9">
+                <resource name="resource_10" location="../resources/processor_8/resourcegroup_9/ICSSchedule_1.xsd" type="xsd"/>
+            </resourceGroup>
+            <output name="output_12">
+                <messageContextRef refUri="messagecontext_11"/>
+            </output>
+        </processor>
+        <processor name="processor_13">
+            <type>integrationMetadata</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_14">
+                <resource name="resource_15" location="../resources/processor_13/resourcegroup_14/ICSIntegrationMetadata.xsd" type="xsd"/>
+            </resourceGroup>
+            <output name="output_17">
+                <messageContextRef refUri="messagecontext_16"/>
+            </output>
+        </processor>
+        <processor name="processor_18">
+            <type>for</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_179">
+                <role>generatedArtifacts</role>
+                <resource name="resource_180" location="../resources/processor_18/resourcegroup_179/generated.wsdl" type="wsdl">
+                    <property name="parentRefUri" value="processor_162/resourcegroup_163/resource_164"/>
+                </resource>
+            </resourceGroup>
+            <resourceGroup name="resourcegroup_933">
+                <role>exprBuilderProperties</role>
+                <resource name="resource_934" location="../resources/processor_18/resourcegroup_933/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_166">
+                <role>secondary-source</role>
+                <subRole>ReadIMExtractStage</subRole>
+            </resourceRef>
+            <output name="output_182">
+                <messageContextRef refUri="messagecontext_181"/>
+            </output>
+            <property name="parallel" value="false"/>
+            <processorName>ForEachInventoryMovement</processorName>
+        </processor>
+        <processor name="processor_23">
+            <type>typeDefinitions</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_24">
+                <resource name="resource_25" location="../resources/processor_23/resourcegroup_24/ICSFault.xsd" type="xsd"/>
+            </resourceGroup>
+            <rootElement elementName="faults" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+        </processor>
+        <processor name="processor_26">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_694">
+                <resource name="resource_695" location="../resources/processor_26/resourcegroup_694/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_30">
+                <messageContextRef refUri="messagecontext_29"/>
+            </output>
+        </processor>
+        <processor name="processor_35">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_700">
+                <resource name="resource_701" location="../resources/processor_35/resourcegroup_700/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_39">
+                <messageContextRef refUri="messagecontext_38"/>
+            </output>
+        </processor>
+        <processor name="processor_44">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_684">
+                <resource name="resource_685" location="../resources/processor_44/resourcegroup_684/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_48">
+                <messageContextRef refUri="messagecontext_47"/>
+            </output>
+        </processor>
+        <processor name="processor_53">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_698">
+                <resource name="resource_699" location="../resources/processor_53/resourcegroup_698/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_57">
+                <messageContextRef refUri="messagecontext_56"/>
+            </output>
+        </processor>
+        <processor name="processor_77">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_84">
+                <resource name="resource_85" location="../resources/processor_77/resourcegroup_84/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <output name="output_81">
+                <messageContextRef refUri="messagecontext_80"/>
+            </output>
+        </processor>
+        <processor name="processor_86">
+            <type>stitch</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_87">
+                <resource name="resource_88" location="../resources/processor_86/resourcegroup_87/stitch.json" type="undefined"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_742">
+                <role>source-and-target</role>
+                <subRole>tableRow</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_80">
+                <role>source-and-target</role>
+                <subRole>finalOutput</subRole>
+            </resourceRef>
+            <processorName>UpdateFinalOutput</processorName>
+        </processor>
+        <processor name="processor_105">
+            <type>transformer</type>
+            <role>transformer:response-map</role>
+            <resourceGroup name="resourcegroup_108">
+                <resource name="resource_109" location="../resources/processor_105/resourcegroup_108/req_2465d32e7e1f42689740ab71956230af.xsl" type="xslt"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_80">
+                <role>secondary-source</role>
+                <subRole>finalOutput</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_118">
+                <role>secondary-source</role>
+                <subRole>GetInventoryMovementDetails</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_116">
+                <role>secondary-source</role>
+                <subRole>GetInventoryMovementDetails_REQUEST</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_166">
+                <role>secondary-source</role>
+                <subRole>ReadIMExtractStage</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_137">
+                <role>secondary-source</role>
+                <subRole>WriteIMExtractStage</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_135">
+                <role>secondary-source</role>
+                <subRole>WriteIMExtractStage_REQUEST</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_16">
+                <role>secondary-source</role>
+                <subRole>self</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_2">
+                <role>secondary-source</role>
+                <subRole>tracking_var_1</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_4">
+                <role>secondary-source</role>
+                <subRole>tracking_var_2</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_6">
+                <role>secondary-source</role>
+                <subRole>tracking_var_3</subRole>
+            </resourceRef>
+            <input name="input_106">
+                <messageContextRef refUri="messagecontext_11"/>
+            </input>
+            <output name="output_107">
+                <messageContextRef refUri="messagecontext_99"/>
+            </output>
+            <property name="has-mappings" value="true"/>
+        </processor>
+        <processor name="processor_126">
+            <type>transformer</type>
+            <role>transformer:response-map</role>
+            <resourceGroup name="resourcegroup_129">
+                <resource name="resource_130" location="../resources/processor_126/resourcegroup_129/req_9e511eab7aa2418fbae7411987e1e701.xsl" type="xslt"/>
+            </resourceGroup>
+            <input name="input_127">
+                <messageContextRef refUri="messagecontext_11"/>
+            </input>
+            <output name="output_128">
+                <messageContextRef refUri="messagecontext_116"/>
+            </output>
+            <property name="has-mappings" value="true"/>
+            <property name="dependent-dvms" value="AE_Common_Lookup"/>
+        </processor>
+        <processor name="processor_131">
+            <type>stageFile</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_132">
+                <resource name="resource_133" location="../resources/processor_131/resourcegroup_132/WriteIMExtractStage_REQUEST.wsdl" type="wsdl"/>
+                <resource name="resource_153" location="../resources/processor_131/resourcegroup_132/WriteIMExtractStage_REQUEST.jca" type="jca"/>
+            </resourceGroup>
+            <resourceGroup name="resourcegroup_937">
+                <role>exprBuilderProperties</role>
+                <resource name="resource_938" location="../resources/processor_131/resourcegroup_937/WRITE_FILENAMEexpr.properties" type="properties">
+                    <role>WRITE_FILENAME</role>
+                </resource>
+                <resource name="resource_939" location="../resources/processor_131/resourcegroup_937/WRITE_DIRNAMEexpr.properties" type="properties">
+                    <role>WRITE_DIRNAME</role>
+                </resource>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <input name="input_136">
+                <messageContextRef refUri="messagecontext_135"/>
+            </input>
+            <output name="output_138">
+                <messageContextRef refUri="messagecontext_137"/>
+            </output>
+            <property name="operation" value="Write"/>
+            <processorName>WriteIMExtractStage</processorName>
+        </processor>
+        <processor name="processor_147">
+            <type>transformer</type>
+            <role>transformer:response-map</role>
+            <resourceGroup name="resourcegroup_150">
+                <resource name="resource_151" location="../resources/processor_147/resourcegroup_150/req_556e22ebef1240c9b8b95abc12ca9e17.xsl" type="xslt"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_118">
+                <role>secondary-source</role>
+                <subRole>GetInventoryMovementDetails</subRole>
+            </resourceRef>
+            <input name="input_148">
+                <messageContextRef refUri="messagecontext_11"/>
+            </input>
+            <output name="output_149">
+                <messageContextRef refUri="messagecontext_135"/>
+            </output>
+            <property name="has-mappings" value="true"/>
+        </processor>
+        <processor name="processor_162">
+            <type>stageFile</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_163">
+                <resource name="resource_164" location="../resources/processor_162/resourcegroup_163/ReadIMExtractStage_REQUEST.wsdl" type="wsdl"/>
+                <resource name="resource_677" location="../resources/processor_162/resourcegroup_163/ReadIMExtractStage_REQUEST.jca" type="jca"/>
+            </resourceGroup>
+            <resourceGroup name="resourcegroup_935">
+                <role>exprBuilderProperties</role>
+                <resource name="resource_936" location="../resources/processor_162/resourcegroup_935/READ_FILE_REFERENCEexpr.properties" type="properties">
+                    <role>READ_FILE_REFERENCE</role>
+                </resource>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_137">
+                <role>secondary-source</role>
+                <subRole>WriteIMExtractStage</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_137">
+                <role>secondary-source</role>
+                <subRole>WriteIMExtractStage</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_137">
+                <role>secondary-source</role>
+                <subRole>WriteIMExtractStage</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <output name="output_167">
+                <messageContextRef refUri="messagecontext_166"/>
+            </output>
+            <property name="operation" value="Read"/>
+            <property name="chunk" value="false"/>
+            <processorName>ReadIMExtractStage</processorName>
+        </processor>
+        <processor name="processor_206">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_702">
+                <resource name="resource_703" location="../resources/processor_206/resourcegroup_702/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_210">
+                <messageContextRef refUri="messagecontext_209"/>
+            </output>
+        </processor>
+        <processor name="processor_220">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_686">
+                <resource name="resource_687" location="../resources/processor_220/resourcegroup_686/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_224">
+                <messageContextRef refUri="messagecontext_223"/>
+            </output>
+        </processor>
+        <processor name="processor_234">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_707">
+                <resource name="resource_708" location="../resources/processor_234/resourcegroup_707/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_238">
+                <messageContextRef refUri="messagecontext_237"/>
+            </output>
+        </processor>
+        <processor name="processor_248">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_682">
+                <resource name="resource_683" location="../resources/processor_248/resourcegroup_682/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_252">
+                <messageContextRef refUri="messagecontext_251"/>
+            </output>
+        </processor>
+        <processor name="processor_262">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_696">
+                <resource name="resource_697" location="../resources/processor_262/resourcegroup_696/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_266">
+                <messageContextRef refUri="messagecontext_265"/>
+            </output>
+        </processor>
+        <processor name="processor_311">
+            <type>catchAll</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_312">
+                <resource name="resource_313" location="../resources/processor_311/resourcegroup_312/ICSFault.xsd" type="xsd"/>
+            </resourceGroup>
+            <output name="output_315">
+                <messageContextRef refUri="messagecontext_314"/>
+            </output>
+        </processor>
+        <processor name="processor_532">
+            <type>contentBasedRouter</type>
+            <role>router:request-post-es</role>
+            <resourceRef refUri="messagecontext_166">
+                <role>secondary-source</role>
+                <subRole>ReadIMExtractStage</subRole>
+            </resourceRef>
+            <input name="input_533">
+                <messageContextRef refUri="messagecontext_11"/>
+            </input>
+            <output name="output_534">
+                <messageContextRef refUri="messagecontext_11"/>
+                <resourceGroup name="resourcegroup_688">
+                    <resource name="resource_689" location="../resources/processor_532/output_534/resourcegroup_688/expr.properties" type="properties"/>
+                </resourceGroup>
+            </output>
+        </processor>
+        <processor name="processor_580">
+            <type>transformer</type>
+            <role>transformer:response-map</role>
+            <resourceGroup name="resourcegroup_583">
+                <resource name="resource_584" location="../resources/processor_580/resourcegroup_583/req_3c3edcac2b334aa1967ec5077f629c99.xsl" type="xslt"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_314">
+                <role>secondary-source</role>
+                <subRole>GlobalFaultObject</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_16">
+                <role>secondary-source</role>
+                <subRole>self</subRole>
+            </resourceRef>
+            <input name="input_581">
+                <messageContextRef refUri="messagecontext_11"/>
+            </input>
+            <output name="output_582">
+                <messageContextRef refUri="messagecontext_574"/>
+            </output>
+            <property name="has-mappings" value="true"/>
+            <property name="dependent-dvms" value="AE_Common_Error_Messages_Lookup"/>
+        </processor>
+        <processor name="processor_613">
+            <type>stitch</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_614">
+                <resource name="resource_615" location="../resources/processor_613/resourcegroup_614/stitch.json" type="undefined"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_80">
+                <role>source-and-target</role>
+                <subRole>finalOutput</subRole>
+            </resourceRef>
+            <processorName>UpdateFinalOutputIfNoLinePresent</processorName>
+        </processor>
+        <processor name="processor_813">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_931">
+                <resource name="resource_932" location="../resources/processor_813/resourcegroup_931/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_181">
+                <role>secondary-source</role>
+                <subRole>Current_MR</subRole>
+            </resourceRef>
+            <output name="output_817">
+                <messageContextRef refUri="messagecontext_816"/>
+            </output>
+            <property name="dependent-dvms" value="AE_Common_Lookup"/>
+        </processor>
+        <processor name="processor_827">
+            <type>assignment</type>
+            <role>undefined</role>
+            <resourceGroup name="resourcegroup_876">
+                <resource name="resource_877" location="../resources/processor_827/resourcegroup_876/expr.properties" type="properties"/>
+            </resourceGroup>
+            <resourceRef refUri="messagecontext_11">
+                <role>primary-source</role>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_29">
+                <role>secondary-source</role>
+                <subRole>val1</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_38">
+                <role>secondary-source</role>
+                <subRole>val2</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_47">
+                <role>secondary-source</role>
+                <subRole>val3</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_56">
+                <role>secondary-source</role>
+                <subRole>val4</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_209">
+                <role>secondary-source</role>
+                <subRole>val5</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_223">
+                <role>secondary-source</role>
+                <subRole>val6</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_237">
+                <role>secondary-source</role>
+                <subRole>val7</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_251">
+                <role>secondary-source</role>
+                <subRole>val8</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_265">
+                <role>secondary-source</role>
+                <subRole>val9</subRole>
+            </resourceRef>
+            <resourceRef refUri="messagecontext_816">
+                <role>secondary-source</role>
+                <subRole>val10</subRole>
+            </resourceRef>
+            <output name="output_830">
+                <messageContextRef refUri="messagecontext_742"/>
+            </output>
+        </processor>
+        <messageContext name="messagecontext_2">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_4">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_6">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_11">
+            <resourceRef refUri="processor_8/resourcegroup_9/resource_10"/>
+            <rootElement elementName="schedule" namespace="http://www.oracle.com/2014/03/ics/schedule"/>
+        </messageContext>
+        <messageContext name="messagecontext_16">
+            <resourceRef refUri="processor_13/resourcegroup_14/resource_15"/>
+            <rootElement elementName="metadata" namespace="http://www.oracle.com/2014/03/ic/integration/metadata"/>
+        </messageContext>
+        <messageContext name="messagecontext_29">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_38">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_47">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_56">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_80">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_99">
+            <resourceRef refUri="application_93/inbound_94/resourcegroup_95/resource_98"/>
+            <rootElement elementName="POST" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST/types"/>
+            <wsdlMessage messageName="POSTRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_101">
+            <resourceRef refUri="application_93/inbound_94/resourcegroup_95/resource_98"/>
+            <rootElement elementName="POSTResponse" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST/types"/>
+            <wsdlMessage messageName="POSTResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_103">
+            <resourceRef refUri="application_93/inbound_94/resourcegroup_95/resource_98"/>
+            <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/collocatedics/InvokeInventoryMovementListNotification"/>
+            <wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST" partName="parameters"/>
+            <wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeInventoryMovementListNotification_REQUEST"/>
+        </messageContext>
+        <messageContext name="messagecontext_116">
+            <resourceRef refUri="application_110/inbound_111/resourcegroup_112/resource_115"/>
+            <rootElement elementName="OutboundSOAPRequestDocument" namespace="http://xmlns.oracle.com/types/GetInventoryMovementDetails/1729060529055/OutboundSOAPRequestDocument"/>
+            <wsdlMessage messageName="runReportInput" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_118">
+            <resourceRef refUri="application_110/inbound_111/resourcegroup_112/resource_115"/>
+            <rootElement elementName="runReportResponse" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <wsdlMessage messageName="runReportOutput" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_120">
+            <resourceRef refUri="application_110/inbound_111/resourcegroup_112/resource_115"/>
+            <rootElement elementName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <wsdlMessage messageName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="AccessDeniedException"/>
+            <wsdlFault faultName="AccessDeniedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </messageContext>
+        <messageContext name="messagecontext_122">
+            <resourceRef refUri="application_110/inbound_111/resourcegroup_112/resource_115"/>
+            <rootElement elementName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <wsdlMessage messageName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="OperationFailedException"/>
+            <wsdlFault faultName="OperationFailedException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </messageContext>
+        <messageContext name="messagecontext_124">
+            <resourceRef refUri="application_110/inbound_111/resourcegroup_112/resource_115"/>
+            <rootElement elementName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+            <wsdlMessage messageName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService" partName="InvalidParametersException"/>
+            <wsdlFault faultName="InvalidParametersException" namespace="http://xmlns.oracle.com/oxp/service/PublicReportService"/>
+        </messageContext>
+        <messageContext name="messagecontext_135">
+            <resourceRef refUri="processor_131/resourcegroup_132/resource_133"/>
+            <rootElement elementName="Write" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteIMExtractStage_REQUEST/types"/>
+            <wsdlMessage messageName="WriteRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteIMExtractStage_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_137">
+            <resourceRef refUri="processor_131/resourcegroup_132/resource_133"/>
+            <rootElement elementName="WriteResponse" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteIMExtractStage_REQUEST/types"/>
+            <wsdlMessage messageName="WriteResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/WriteIMExtractStage_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_166">
+            <resourceRef refUri="processor_162/resourcegroup_163/resource_164"/>
+            <rootElement elementName="ReadResponse" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadIMExtractStage_REQUEST/types"/>
+            <wsdlMessage messageName="ReadResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/stagefile/ReadIMExtractStage_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_181">
+            <resourceRef refUri="processor_18/resourcegroup_179/resource_180"/>
+            <rootElement elementName="MR" namespace="http://xmlns.oracle.com/cloud/adapter/nxsd/surrogate/ReadIMExtractStage"/>
+        </messageContext>
+        <messageContext name="messagecontext_209">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_223">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_237">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_251">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_265">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_314">
+            <resourceRef refUri="processor_311/resourcegroup_312/resource_313"/>
+            <rootElement elementName="fault" namespace="http://www.oracle.com/2014/03/ics/fault"/>
+        </messageContext>
+        <messageContext name="messagecontext_574">
+            <resourceRef refUri="application_568/inbound_569/resourcegroup_570/resource_573"/>
+            <rootElement elementName="POST" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST/types"/>
+            <wsdlMessage messageName="POSTRequestMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_576">
+            <resourceRef refUri="application_568/inbound_569/resourcegroup_570/resource_573"/>
+            <rootElement elementName="POSTResponse" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST/types"/>
+            <wsdlMessage messageName="POSTResponseMessage" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST" partName="parameters"/>
+        </messageContext>
+        <messageContext name="messagecontext_578">
+            <resourceRef refUri="application_568/inbound_569/resourcegroup_570/resource_573"/>
+            <rootElement elementName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/generic/rest/fault/collocatedics/InvokeCommonErrorEmailNotification"/>
+            <wsdlMessage messageName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST" partName="parameters"/>
+            <wsdlFault faultName="APIInvocationError" namespace="http://xmlns.oracle.com/cloud/adapter/collocatedics/InvokeCommonErrorEmailNotification_REQUEST"/>
+        </messageContext>
+        <messageContext name="messagecontext_742">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <messageContext name="messagecontext_816">
+            <rootElement elementName="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+        </messageContext>
+        <commonNamespaceMaps>
+            <commonNamespaceMap prefix="fn" namespace="http://www.w3.org/2005/xpath-functions"/>
+        </commonNamespaceMaps>
+        <orchestration>
+            <integrationMetadata id="im0" refUri="processor_13"/>
+            <globalTry id="gt0">
+                <scheduleReceive trackingRefUri="processor_1" id="sr0" refUri="processor_8"/>
+                <transformer id="m1" refUri="processor_126"/>
+                <invoke id="i1" refUri="application_110" name="SOAP1"/>
+                <transformer id="m2" refUri="processor_147"/>
+                <stageFile id="sf0" refUri="processor_131"/>
+                <stageFile id="sf1" refUri="processor_162"/>
+                <label id="l1" name="IntializeFinalOutput">
+                    <assignment id="a5" refUri="processor_77"/>
+                </label>
+                <router id="s0" refUri="processor_532">
+                    <route id="sc0" refUri="processor_532/output_534">
+                        <stitch id="sh1" refUri="processor_613"/>
+                    </route>
+                </router>
+                <for id="f0" refUri="processor_18">
+                    <label id="l0" name="AssignVariables">
+                        <assignment id="a0" refUri="processor_26"/>
+                        <assignment id="a1" refUri="processor_35"/>
+                        <assignment id="a2" refUri="processor_44"/>
+                        <assignment id="a3" refUri="processor_53"/>
+                        <assignment id="a4" refUri="processor_206"/>
+                        <assignment id="a6" refUri="processor_220"/>
+                        <assignment id="a7" refUri="processor_234"/>
+                        <assignment id="a8" refUri="processor_248"/>
+                        <assignment id="a9" refUri="processor_262"/>
+                        <assignment id="a10" refUri="processor_813"/>
+                        <assignment id="a12" refUri="processor_827"/>
+                    </label>
+                    <stitch id="sh0" refUri="processor_86"/>
+                </for>
+                <transformer id="m0" refUri="processor_105"/>
+                <invoke id="i0" refUri="application_93" name="Integration1"/>
+                <stop id="st0"/>
+                <catchAll id="ta0" refUri="processor_311">
+                    <transformer id="m3" refUri="processor_580"/>
+                    <invoke id="i2" refUri="application_568" name="Integration2"/>
+                    <ehStop id="eh0"/>
+                </catchAll>
+            </globalTry>
+        </orchestration>
+    </ns3:icsflow>
+</ns3:icsproject>
